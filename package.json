@@ -8,11 +8,10 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "dependencies": {
-    "geist": "^1.2.1",
-    "next": "14.1.0",
-    "react": "^18",
-    "react-dom": "^18"
+  "husky": {
+    "hooks": {
+      "pre-commit": "next lint"
+    }
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -21,8 +20,19 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "eslint-plugin-sort-destructure-keys": "^1.5.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-typescript-sort-keys": "^3.1.0",
+    "eslint-plugin-unicorn": "^50.0.1",
+    "husky": "^4.3.8",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
+  },
+  "dependencies": {
+    "geist": "^1.2.1",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18"
   }
 }

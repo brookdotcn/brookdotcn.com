@@ -6,15 +6,15 @@ import { type Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
-  title: "Home | brookdotcn",
   description: "A personal site for myself.",
+  title: "Home | brookdotcn",
 };
 
-type IndexLayoutProps = {
+type Props = {
   readonly children: ReactNode;
 };
 
-const IndexLayout = ({ children }: IndexLayoutProps): JSX.Element => {
+const IndexLayout = ({ children }: Props): JSX.Element => {
   return (
     <html lang="en">
       <body className={GeistMono.className}>{children}</body>
