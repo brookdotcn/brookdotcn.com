@@ -1,6 +1,7 @@
 import "./index.css";
 
 import { type ReactNode, type JSX } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { type Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 
@@ -21,6 +22,7 @@ const IndexLayout = ({ children }: Props): JSX.Element => {
       <body className={GeistMono.className}>
         <Navbar />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
