@@ -3,6 +3,8 @@ import { type NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { FaGithubSquare } from "react-icons/fa";
+
 const AboutPage: NextPage = (): JSX.Element => {
   return (
     <div className="innerPage">
@@ -20,7 +22,7 @@ const AboutPage: NextPage = (): JSX.Element => {
             target="_blank"
             className="hover:font-semibold hover:underline"
           >
-            GitHub
+            <FaGithubSquare size={32} />
           </Link>
         </div>
       </div>

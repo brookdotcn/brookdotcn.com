@@ -11,15 +11,13 @@ type Props = {
 
 const Card: FC<Props> = ({ content, createdAt, title }: Props): JSX.Element => {
   return (
-    <div className="min-w-96 border rounded-lg min-h-44 p-2 flex flex-col justify-between">
+    <div className="min-w-80 max-w-96 bg-white border border-neutral-300 rounded-lg min-h-44 p-2 flex flex-col justify-between">
       <div className="flex flex-col gap-2">
         <h3 className="font-semibold text-lg">{title}</h3>
-        <p className="text-neutral-400 text-sm text-ellipsis">
-          {stringCut(content, 75)}
-        </p>
+        <p className="text-neutral-400 text-sm">{stringCut(content, 100)}</p>
       </div>
       <div className="flex justify-between">
-        <span className="text-neutral-400 text-sm">
+        <span className="text-neutral-300 text-sm">
           {createdAt.toLocaleDateString()}
         </span>
         <Link
