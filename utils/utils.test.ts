@@ -1,5 +1,5 @@
-import { stringCut } from "./index";
 import { describe, expect, test } from "vitest";
+import { stringCut } from "./index";
 
 describe("stringCut", () => {
   test("should return string affixed with an ellipsis", () => {

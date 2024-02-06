@@ -1,9 +1,9 @@
 import "./index.css";
 
-import { type ReactNode, type JSX } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { type Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
+import { type Metadata } from "next";
+import { type ReactNode, type JSX } from "react";
 
 import Navbar from "@/components/navbar";
 

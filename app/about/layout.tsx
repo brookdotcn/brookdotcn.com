@@ -1,5 +1,5 @@
-import { type ReactNode, type JSX } from "react";
 import { type Metadata } from "next";
+import { type ReactNode, type JSX } from "react";
 
 export const metadata: Metadata = {
   description: "A little bit about brookdotcn.",

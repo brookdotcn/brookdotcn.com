@@ -1,7 +1,6 @@
-import Navbar from "./index";
-
 import { render, screen, cleanup } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
+import Navbar from "./index";
 
 const links = ["brookdotcn", "blog", "about"] as const;
 

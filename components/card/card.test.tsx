@@ -1,7 +1,6 @@
-import Card from "./index";
-
 import { render, cleanup, screen } from "@testing-library/react";
 import { afterEach, describe, expect, test } from "vitest";
+import Card from "./index";
 
 const content = "This is content";
 const createdAt = new Date();

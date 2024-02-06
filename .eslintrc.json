@@ -11,6 +11,15 @@
     "plugin:typescript-sort-keys/recommended"
   ],
   "rules": {
+    "import/order": [
+      2,
+      {
+        "alphabetize": {
+          "caseInsensitive": false,
+          "order": "asc"
+        }
+      }
+    ],
     "sort-keys-fix/sort-keys-fix": "error",
     "sort-destructure-keys/sort-destructure-keys": [
       2,

@@ -1,5 +1,5 @@
-import { type JSX } from "react";
 import { type NextPage } from "next";
+import { type JSX } from "react";
 
 import Card from "@/components/card";
 

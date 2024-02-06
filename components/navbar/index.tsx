@@ -1,5 +1,5 @@
-import { type FC, type JSX } from "react";
 import Link from "next/link";
+import { type FC, type JSX } from "react";
 
 const Navbar: FC = (): JSX.Element => {
   return (
