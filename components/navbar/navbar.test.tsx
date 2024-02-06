@@ -1,29 +1,26 @@
 import Navbar from "./index";
 
-import { type ByRoleOptions, render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
-
-render(<Navbar />);
+import { render, screen, cleanup } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 
 const links = ["brookdotcn", "blog", "about"] as const;
+
+const getLink = (name: string): HTMLElement => {
+  return screen.getByRole("link", { name });
+};
+
+afterEach(cleanup);
+beforeEach(() => {
+  render(<Navbar />);
+});
 
 test("should cover all links", () => {
   expect(screen.getAllByRole("link").length).toBe(links.length);
 });
 
 describe.each(links)("when the %s link is rendered", (text) => {
-  const linkConfig: ByRoleOptions = {
-    name: text,
-  };
-
-  const link = screen.getByRole("link", linkConfig);
-
-  test("should have the correct text", () => {
-    expect(link.textContent).toBe(text);
-  });
-
   test("should have the correct href", () => {
     const linkText = text === "brookdotcn" ? "" : text;
-    expect(link.getAttribute("href")).toBe(`/${linkText}`);
+    expect(getLink(text).getAttribute("href")).toBe(`/${linkText}`);
   });
 });

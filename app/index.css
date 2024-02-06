@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .outerPage {
+    @apply flex justify-center;
+  }
+
+  .innerPage {
+    @apply flex flex-col gap-4 lg:w-3/4 w-full sm:px-4 px-4 py-12;
+  }
+}

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Navbar: FC = (): JSX.Element => {
   return (
-    <nav className="h-20 flex justify-around items-center">
+    <nav className="h-12 flex border-b justify-around items-center">
       <div className="w-1/2 text-center">
         <Link href="/" className="hover:font-semibold hover:underline">
           brookdotcn
