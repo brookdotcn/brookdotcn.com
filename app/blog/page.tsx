@@ -1,38 +1,25 @@
 import { type NextPage } from "next";
 import { type JSX } from "react";
-
 import Card from "@/components/card";
+import prisma from "@/lib";
 
-const BlogPage: NextPage = (): JSX.Element => {
+const BlogPage: NextPage = async (): Promise<JSX.Element> => {
+  const blogs = await prisma.blog.findMany();
+
   return (
     <div className="innerPage">
       <h1 className="font-semibold text-2xl">Blogs</h1>
       <div className="flex rounded-lg gap-4 flex-wrap">
-        <Card
-          title="Test Card"
-          content="This is a test card, until the database is setup. I am now actively trying to make this as long as possible to test handling long pieces of content."
-          createdAt={new Date()}
-        />
-        <Card
-          title="Test Card"
-          content="This is a test card, until the database is setup. I am now actively trying to make this as long as possible to test handling long pieces of content."
-          createdAt={new Date()}
-        />
-        <Card
-          title="Test Card"
-          content="This is a test card, until the database is setup. I am now actively trying to make this as long as possible to test handling long pieces of content."
-          createdAt={new Date()}
-        />
-        <Card
-          title="Test Card"
-          content="This is a test card, until the database is setup. I am now actively trying to make this as long as possible to test handling long pieces of content."
-          createdAt={new Date()}
-        />
-        <Card
-          title="Test Card"
-          content="This is a test card, until the database is setup. I am now actively trying to make this as long as possible to test handling long pieces of content."
-          createdAt={new Date()}
-        />
+        {blogs.map((blog) => {
+          return (
+            <Card
+              key={blog.id}
+              title={blog.title}
+              content={blog.content}
+              createdAt={blog.createdAt}
+            />
+          );
+        })}
       </div>
     </div>
   );
