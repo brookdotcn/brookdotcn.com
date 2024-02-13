@@ -14,11 +14,11 @@ afterEach(cleanup);
 describe("when the title is used for the href", () => {
   test("should remove any trailing whitespace", () => {
     render(<Card title="a b c " content={content} createdAt={createdAt} />);
-    expect(getLink().getAttribute("href")).toBe("/a-b-c");
+    expect(getLink().getAttribute("href")).toBe("/blog/a-b-c");
   });
 
   test("should set the href correctly", () => {
     render(<Card title="a b c" content={content} createdAt={createdAt} />);
-    expect(getLink().getAttribute("href")).toBe("/a-b-c");
+    expect(getLink().getAttribute("href")).toBe("/blog/a-b-c");
   });
 });

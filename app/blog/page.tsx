@@ -3,7 +3,7 @@ import { type JSX } from "react";
 import Card from "@/components/card";
 import prisma from "@/lib";
 
-const BlogPage: NextPage = async (): Promise<JSX.Element> => {
+const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
   const blogs = await prisma.blog.findMany();
 
   return (
@@ -25,4 +25,4 @@ const BlogPage: NextPage = async (): Promise<JSX.Element> => {
   );
 };
 
-export default BlogPage;
+export default BlogsPage;

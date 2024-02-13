@@ -10,8 +10,8 @@ type Props = {
   readonly children: ReactNode;
 };
 
-const BlogLayout = ({ children }: Props): JSX.Element => {
+const BlogsLayout = ({ children }: Props): JSX.Element => {
   return <main className="outerPage">{children}</main>;
 };
 
-export default BlogLayout;
+export default BlogsLayout;

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { type FC, type JSX } from "react";
-
-import { stringCut } from "@/utils";
+import { formatBlogTitleForUrl, stringCut } from "@/utils";
 
 type Props = {
   content: string;
@@ -21,7 +20,7 @@ const Card: FC<Props> = ({ content, createdAt, title }: Props): JSX.Element => {
           {createdAt.toLocaleDateString()}
         </span>
         <Link
-          href={`/${title.toLocaleLowerCase().trim().split(" ").join("-")}`}
+          href={`/blog/${formatBlogTitleForUrl(title)}`}
           className="text-blue-400 text-sm w-max hover:font-semibold hover:underline"
         >
           See More
