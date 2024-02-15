@@ -7,7 +7,7 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
   const blogs = await prisma.blog.findMany();
 
   return (
-    <div className="innerPage">
+    <section className="innerPage">
       <h1 className="font-semibold text-2xl">Blogs</h1>
       <div className="flex rounded-lg gap-4 flex-wrap">
         {blogs.map((blog) => {
@@ -21,7 +21,7 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

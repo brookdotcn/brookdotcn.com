@@ -19,7 +19,7 @@ const AboutPage: NextPage = (): JSX.Element => {
           <Link
             href="https://github.com/brookdotcn"
             target="_blank"
-            className="hover:font-semibold hover:underline"
+            className="link"
           >
             <FaGithubSquare size={32} />
           </Link>

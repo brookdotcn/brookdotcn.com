@@ -11,7 +11,7 @@ type Props = {
 };
 
 const AboutLayout = ({ children }: Props): JSX.Element => {
-  return <main className="outerPage">{children}</main>;
+  return <section className="outerPage">{children}</section>;
 };
 
 export default AboutLayout;

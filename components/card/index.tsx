@@ -21,7 +21,7 @@ const Card: FC<Props> = ({ content, createdAt, title }: Props): JSX.Element => {
         </span>
         <Link
           href={`/blog/${formatBlogTitleForUrl(title)}`}
-          className="text-blue-400 text-sm w-max hover:font-semibold hover:underline"
+          className="text-blue-400 text-sm w-max link"
         >
           See More
         </Link>

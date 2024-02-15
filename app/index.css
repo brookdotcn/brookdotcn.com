@@ -10,4 +10,8 @@
   .innerPage {
     @apply flex flex-col gap-4 lg:w-3/4 w-full sm:px-4 px-4 py-12;
   }
+
+  .link {
+    @apply hover:font-semibold hover:underline;
+  }
 }
