@@ -10,6 +10,9 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
     <section className="outerPage">
       <div className="innerPage">
         <h1 className="font-semibold text-2xl">Recent Blogs</h1>
+        <p className="text-sm text-neutral-400">
+          Be up to date on my latest blogs, left most recent
+        </p>
         <div className="flex bg-neutral-100 p-2 rounded-lg w-full gap-4 overflow-x-auto">
           {blogs.map((blog) => {
             return (
