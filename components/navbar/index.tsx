@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type FC, type JSX } from "react";
-import { AiFillHome } from "react-icons/ai";
-import { BsFilePersonFill } from "react-icons/bs";
-import { FaBook } from "react-icons/fa";
 
 const Navbar: FC = (): JSX.Element => {
   return (
@@ -22,19 +19,19 @@ const Navbar: FC = (): JSX.Element => {
           href="/"
           className="link flex gap-2 items-center p-2 sm:hover:bg-neutral-200"
         >
-          <AiFillHome size={24} /> home
+          home
         </Link>
         <Link
           href="/blog"
           className="link flex gap-2 items-center p-2 sm:hover:bg-neutral-200"
         >
-          <FaBook size={24} /> blog
+          blog
         </Link>
         <Link
           href="/about"
           className="link flex gap-2 items-center p-2 sm:hover:bg-neutral-200"
         >
-          <BsFilePersonFill size={24} /> about
+          about
         </Link>
       </div>
     </nav>
