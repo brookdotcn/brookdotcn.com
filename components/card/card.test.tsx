@@ -6,7 +6,7 @@ const content = "This is content";
 const createdAt = new Date();
 
 const getLink = (): HTMLElement => {
-  return screen.getByRole("link", { name: "See More" });
+  return screen.getByRole("link", { name: "Read More" });
 };
 
 afterEach(cleanup);
