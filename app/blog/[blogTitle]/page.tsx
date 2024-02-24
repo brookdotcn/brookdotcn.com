@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import { type JSX } from "react";
+import Markup from "@/components/markup";
 import prisma from "@/lib";
 import { parseBlogTitleFromUrl } from "@/utils";
 
@@ -18,7 +19,9 @@ const BlogPage: NextPage<Props> = async ({
 
   return (
     <div className="innerPage">
-      <h1 className="font-semibold text-2xl">{blogByTitle?.title}</h1>
+      <h1 className="font-bold text-2xl">{blogByTitle?.title!}</h1>
+      <hr />
+      <Markup rawMarkdown={blogByTitle?.content!} />
     </div>
   );
 };

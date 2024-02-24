@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+#markdown {
+  ul {
+    list-style-type: square;
+  }
+}
+
 @layer components {
   .outerPage {
     @apply flex justify-center;
