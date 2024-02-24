@@ -8,18 +8,23 @@ type MarkupProps = {
   rawMarkdown: string;
 };
 
-const Markup: FC<MarkupProps> = ({
-  rawMarkdown: rawMarkup,
-}: MarkupProps): JSX.Element => {
+const Markup: FC<MarkupProps> = ({ rawMarkdown }: MarkupProps): JSX.Element => {
   return (
     <div className="w-full flex flex-col gap-4" id="markdown">
       <Markdown
         remarkPlugins={[remarkGfm]}
         components={{
-          code: (props) => {
-            const { children, className } = props;
+          code: ({ children, className, ...props }) => {
+            if (!children) return;
             const languageIdentifier = /language-(\w+)/.exec(className || "");
-            if (!languageIdentifier || !children) return;
+
+            if (!languageIdentifier) {
+              return (
+                <code {...props} id="inline-code">
+                  {children}
+                </code>
+              );
+            }
 
             return (
               <Prism language={languageIdentifier[1]} style={vscDarkPlus}>
@@ -29,7 +34,7 @@ const Markup: FC<MarkupProps> = ({
           },
         }}
       >
-        {rawMarkup}
+        {rawMarkdown}
       </Markdown>
     </div>
   );

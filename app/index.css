@@ -3,8 +3,42 @@
 @tailwind utilities;
 
 #markdown {
+  #inline-code {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    border: 1px solid lightgrey;
+  }
+
+  h1 {
+    font-size: xx-large;
+  }
+
+  h2 {
+    font-size: larger;
+  }
+
+  h3 {
+    font-size: large;
+  }
+
+  ol {
+    list-style-type: lower-alpha;
+    list-style-position: inside;
+  }
+
   ul {
     list-style-type: square;
+    list-style-position: inside;
+  }
+
+  a {
+    color: cornflowerblue;
+    text-decoration: underline;
+  }
+
+  pre {
+    border-radius: 5px;
   }
 }
 
