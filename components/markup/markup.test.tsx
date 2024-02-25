@@ -50,9 +50,9 @@ describe("when the markdown is parsed", () => {
 
   describe("when it is a code block", () => {
     test.each(["const", "=", "10", ";"])(
-      "should return %s with a token class",
+      "should return %s with a 'token token' class attribute",
       (token) => {
-        expect(screen.getByText(token).className).toBe("token");
+        expect(screen.getByText(token).className).toBe("token token");
       }
     );
   });
