@@ -27,7 +27,11 @@ const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
             }
 
             return (
-              <Prism language={languageIdentifier[1]} style={vscDarkPlus}>
+              <Prism
+                showLineNumbers={true}
+                language={languageIdentifier[1]}
+                style={vscDarkPlus}
+              >
                 {children.toString().replace(/\n$/, "")}
               </Prism>
             );
