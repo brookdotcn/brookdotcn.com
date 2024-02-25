@@ -17,7 +17,14 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
 
   return (
     <div className="innerPage">
-      <h1 className="font-bold text-2xl">{blogByTitle?.title!}</h1>
+      <div className="flex justify-between">
+        <h1 className="font-bold text-2xl">{blogByTitle?.title!}</h1>
+        <span className="flex gap-4">
+          <p className="text-sm text-neutral-400">
+            {blogByTitle?.createdAt!.toLocaleDateString()}
+          </p>
+        </span>
+      </div>
       <hr />
       <Markup rawMarkdown={blogByTitle?.content!} />
     </div>
