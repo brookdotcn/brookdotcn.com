@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import { type NextPage, type Metadata } from "next";
 import { type ReactNode, type JSX } from "react";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ type Props = {
   readonly children: ReactNode;
 };
 
-const BlogsLayout = ({ children }: Props): JSX.Element => {
+const BlogsLayout: NextPage<Props> = ({ children }): JSX.Element => {
   return <section className="outerPage">{children}</section>;
 };
 

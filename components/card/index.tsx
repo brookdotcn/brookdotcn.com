@@ -9,7 +9,7 @@ type Props = {
   title: string;
 };
 
-const Card: FC<Props> = ({ content, createdAt, title }: Props): JSX.Element => {
+const Card: FC<Props> = ({ content, createdAt, title }): JSX.Element => {
   return (
     <div className="min-w-80 max-w-96 bg-white border border-neutral-300 rounded-lg min-h-44 p-2 flex flex-col justify-between">
       <div className="flex flex-col gap-2">

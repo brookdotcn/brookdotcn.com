@@ -8,9 +8,7 @@ type Props = {
   params: { blogTitle: string };
 };
 
-const BlogPage: NextPage<Props> = async ({
-  params,
-}: Props): Promise<JSX.Element> => {
+const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
   const blogByTitle = await prisma.blog.findFirst({
     where: {
       title: parseBlogTitleFromUrl(params.blogTitle),

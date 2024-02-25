@@ -2,7 +2,7 @@ import "./index.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
-import { type Metadata } from "next";
+import { type NextPage, type Metadata } from "next";
 import { type ReactNode, type JSX } from "react";
 import Navbar from "@/components/navbar";
 
@@ -15,7 +15,7 @@ type Props = {
   readonly children: ReactNode;
 };
 
-const IndexLayout = ({ children }: Props): JSX.Element => {
+const IndexLayout: NextPage<Props> = ({ children }): JSX.Element => {
   return (
     <html lang="en">
       <body className={GeistMono.className}>

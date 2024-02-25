@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import { type NextPage, type Metadata } from "next";
 import { type ReactNode, type JSX } from "react";
 import prisma from "@/lib";
 import { parseBlogTitleFromUrl } from "@/utils";
@@ -23,7 +23,7 @@ export const generateMetadata = async ({
   };
 };
 
-const BlogsLayout = ({ children }: Props): JSX.Element => {
+const BlogsLayout: NextPage<Props> = ({ children }): JSX.Element => {
   return <>{children}</>;
 };
 

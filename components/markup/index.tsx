@@ -8,7 +8,7 @@ type MarkupProps = {
   rawMarkdown: string;
 };
 
-const Markup: FC<MarkupProps> = ({ rawMarkdown }: MarkupProps): JSX.Element => {
+const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
   return (
     <div className="w-full flex flex-col gap-4" id="markdown">
       <Markdown

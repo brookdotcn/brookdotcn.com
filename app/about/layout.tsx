@@ -1,8 +1,8 @@
-import { type Metadata } from "next";
+import { type NextPage, type Metadata } from "next";
 import { type ReactNode, type JSX } from "react";
 
 export const metadata: Metadata = {
-  description: "A little bit about brookdotcn.",
+  description: "A little bit about me.",
   title: "About | brookdotcn",
 };
 
@@ -10,7 +10,7 @@ type Props = {
   readonly children: ReactNode;
 };
 
-const AboutLayout = ({ children }: Props): JSX.Element => {
+const AboutLayout: NextPage<Props> = ({ children }): JSX.Element => {
   return <section className="outerPage">{children}</section>;
 };
 
