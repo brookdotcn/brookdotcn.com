@@ -4,7 +4,7 @@ import { type FC, type JSX } from "react";
 
 const Navbar: FC = (): JSX.Element => {
   return (
-    <nav className="h-full sm:w-24 w-full flex sm:flex-col bg-neutral-100 justify-between sm:justify-normal border-r">
+    <nav className="h-full sm:w-24 w-full flex sm:flex-col bg-neutral-100 border-r">
       <div className="h-full sm:h-24 w-1/3 sm:w-full flex justify-center items-center">
         <Image
           className="rounded"
@@ -14,7 +14,7 @@ const Navbar: FC = (): JSX.Element => {
           width="50"
         />
       </div>
-      <div className="flex rounded sm:rounded-none bg-neutral-200 sm:bg-transparent w-2/3 sm:w-full sm:flex-col gap-2 overflow-x-auto">
+      <div className="flex w-2/3 sm:w-full sm:flex-col gap-2 overflow-x-auto">
         <Link
           href="/"
           className="link flex gap-2 items-center p-2 sm:hover:bg-neutral-200"
