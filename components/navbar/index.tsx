@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type FC, type JSX } from "react";
+import { IoHomeOutline } from "react-icons/io5";
+import { MdOutlineArticle } from "react-icons/md";
+import { SlInfo } from "react-icons/sl";
 
 const Navbar: FC = (): JSX.Element => {
   return (
-    <nav className="h-full sm:w-24 w-full flex sm:flex-col bg-neutral-100 border-r">
-      <div className="h-full sm:h-24 w-1/3 sm:w-full flex justify-center items-center">
+    <nav className="sm:h-full py-4 sm:w-20 w-full flex sm:flex-col sm:gap-8 bg-neutral-100 border-r">
+      <div className="flex w-1/3 sm:w-full justify-center items-center">
         <Image
           className="rounded"
           src="/brook.jpeg"
@@ -14,24 +17,24 @@ const Navbar: FC = (): JSX.Element => {
           width="50"
         />
       </div>
-      <div className="flex w-2/3 sm:w-full sm:flex-col gap-2 overflow-x-auto">
+      <div className="flex text-2xl sm:w-full w-full justify-center items-center sm:flex-col gap-2">
         <Link
           href="/"
-          className="link flex gap-2 items-center p-2 sm:hover:bg-neutral-200"
+          className="link flex gap-2 sm:w-full justify-center p-2 sm:hover:bg-neutral-200"
         >
-          home
+          <IoHomeOutline title="Home" />
         </Link>
         <Link
           href="/blog"
-          className="link flex gap-2 items-center p-2 sm:hover:bg-neutral-200"
+          className="link flex gap-2 sm:w-full justify-center p-2 sm:hover:rounded sm:hover:bg-neutral-200"
         >
-          blog
+          <MdOutlineArticle title="Blog" />
         </Link>
         <Link
           href="/about"
-          className="link flex gap-2 items-center p-2 sm:hover:bg-neutral-200"
+          className="link flex gap-2 sm:w-full justify-center p-2 sm:hover:rounded sm:hover:bg-neutral-200"
         >
-          about
+          <SlInfo title="About" />
         </Link>
       </div>
     </nav>

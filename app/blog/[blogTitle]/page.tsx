@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import { type JSX } from "react";
+import { IoCalendarClearOutline } from "react-icons/io5";
 import Markup from "@/components/markup";
 import prisma from "@/lib";
 import { parseBlogTitleFromUrl } from "@/utils";
@@ -21,7 +22,8 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
         <h1 className="font-bold text-2xl text-ellipsis break-words">
           {blogByTitle?.title!}
         </h1>
-        <p className="text-sm text-neutral-400">
+        <p className="text-sm font-light flex gap-2 items-center text-neutral-400">
+          <IoCalendarClearOutline />
           {blogByTitle?.createdAt!.toLocaleDateString()}
         </p>
       </div>
