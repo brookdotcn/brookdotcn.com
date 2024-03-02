@@ -52,7 +52,7 @@ body {
 }
 
 @layer components {
-  .page-inner {
+  .page {
     @apply flex flex-col gap-4 px-4 py-12 sm:px-16 md:px-24 lg:px-28 xl:px-44;
   }
 

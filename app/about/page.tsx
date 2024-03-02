@@ -6,7 +6,7 @@ import { PiGithubLogo } from "react-icons/pi";
 
 const AboutPage: NextPage = (): JSX.Element => {
   return (
-    <div className="page-inner">
+    <div className="page">
       <div className="page-header">
         <GrContactInfo size={24} />
         <h1 className="page-title">Brook Nash</h1>

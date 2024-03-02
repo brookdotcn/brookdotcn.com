@@ -16,7 +16,7 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
   });
 
   return (
-    <div className="page-inner">
+    <div className="page">
       <div className="page-header flex-col items-start">
         <p className="text-neutral-500">
           {blogByTitle?.createdAt!.toLocaleDateString()}

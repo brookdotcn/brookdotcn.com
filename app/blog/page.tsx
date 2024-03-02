@@ -8,7 +8,7 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
   const blogs = await prisma.blog.findMany();
 
   return (
-    <div className="page-inner">
+    <div className="page">
       <div className="page-header">
         <TbSelectAll size={24} />
         <h1 className="page-title">All Blogs</h1>

@@ -20,7 +20,7 @@ const IndexLayout: NextPage<Props> = ({ children }): JSX.Element => {
     <html lang="en">
       <body className={GeistMono.className}>
         <main className="flex h-screen flex-col sm:flex-row">
-          <div className="h-16 w-screen bg-neutral-800 sm:h-screen sm:w-24">
+          <div className="h-16 w-screen sm:h-screen sm:w-24">
             <Navbar />
           </div>
 

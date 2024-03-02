@@ -8,7 +8,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
   const blogs = await prisma.blog.findMany();
 
   return (
-    <section className="page-inner">
+    <section className="page">
       <div className="page-header">
         <IoIosTimer size={24} />
         <h1 className="page-title">Recent Blogs</h1>
