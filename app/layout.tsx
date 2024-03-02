@@ -19,12 +19,14 @@ const IndexLayout: NextPage<Props> = ({ children }): JSX.Element => {
   return (
     <html lang="en">
       <body className={GeistMono.className}>
-        <main className="flex sm:flex-row flex-col">
-          <div className="sm:sticky sm:h-screen h-16 top-0 left-0">
+        <main className="flex h-screen flex-col sm:flex-row">
+          <div className="h-16 w-screen bg-neutral-800 sm:h-screen sm:w-24">
             <Navbar />
           </div>
-          <div className="w-full overflow-auto">{children}</div>
+
+          <div className="h-full w-full overflow-y-auto">{children}</div>
         </main>
+
         <SpeedInsights />
       </body>
     </html>

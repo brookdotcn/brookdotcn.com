@@ -8,28 +8,26 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
   const blogs = await prisma.blog.findMany();
 
   return (
-    <section className="outerPage">
-      <div className="innerPage">
-        <h1 className="font-semibold flex gap-2 items-center text-2xl">
-          <IoIosTimer />
-          Recent Blogs
-        </h1>
-        <p className="text-sm font-light text-neutral-400">
-          Be up to date on my latest blogs, left most recent
-        </p>
-        <div className="flex bg-neutral-100 p-2 rounded-lg w-full gap-4 overflow-x-auto">
-          {blogs.map((blog) => {
-            return (
-              <Card
-                key={blog.id}
-                title={blog.title}
-                content={blog.content}
-                createdAt={blog.createdAt}
-              />
-            );
-          })}
-        </div>
+    <section className="page-inner">
+      <div className="page-header">
+        <IoIosTimer size={24} />
+        <h1 className="page-title">Recent Blogs</h1>
       </div>
+
+      <p className="page-subtitle">
+        Be up to date on my latest blogs, left most recent.
+      </p>
+
+      {blogs.map((blog) => {
+        return (
+          <Card
+            key={blog.id}
+            title={blog.title}
+            content={blog.content}
+            createdAt={blog.createdAt}
+          />
+        );
+      })}
     </section>
   );
 };

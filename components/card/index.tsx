@@ -13,23 +13,24 @@ type Props = {
 
 const Card: FC<Props> = ({ content, createdAt, title }): JSX.Element => {
   return (
-    <div className="min-w-80 max-w-96 bg-white border border-neutral-300 rounded-lg min-h-44 p-2 gap-2 flex flex-col justify-between">
-      <div className="flex flex-col gap-2">
-        <h3 className="font-semibold text-lg">{title}</h3>
-        <div className="text-neutral-400 text-sm">
-          <Markup rawMarkdown={stringCut(content, 150)} />
-        </div>
+    <div className="flex w-96 flex-col gap-4 rounded bg-neutral-800 p-4">
+      <h3 className="text-xl font-semibold">{title}</h3>
+
+      <div className="text-sm text-neutral-500">
+        <Markup rawMarkdown={stringCut(content, 150)} />
       </div>
+
       <div className="flex justify-between">
-        <span className="text-neutral-300 flex gap-2 items-center text-sm">
+        <span className="flex items-center gap-2">
           <IoCalendarClearOutline />
-          {createdAt.toLocaleDateString()}
+          <p>{createdAt.toLocaleDateString()}</p>
         </span>
-        <Link
-          href={`/blog/${formatBlogTitleForUrl(title)}`}
-          className="text-blue-400 text-sm w-max flex gap-2 items-center link"
-        >
-          <MdOutlineReadMore size={24} /> Read More
+
+        <Link href={`/blog/${formatBlogTitleForUrl(title)}`}>
+          <span className="flex items-center gap-2 text-blue-400 hover:text-blue-500">
+            <MdOutlineReadMore size={24} />
+            Read More
+          </span>
         </Link>
       </div>
     </div>

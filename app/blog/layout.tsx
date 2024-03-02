@@ -11,7 +11,7 @@ type Props = {
 };
 
 const BlogsLayout: NextPage<Props> = ({ children }): JSX.Element => {
-  return <section className="outerPage">{children}</section>;
+  return <section>{children}</section>;
 };
 
 export default BlogsLayout;

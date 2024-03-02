@@ -10,8 +10,9 @@ type MarkupProps = {
 
 const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
   return (
-    <div className="w-full flex flex-col gap-4" id="markdown">
+    <div id="markdown">
       <Markdown
+        className="flex flex-col gap-4"
         remarkPlugins={[remarkGfm]}
         components={{
           code: ({ children, className, ...props }) => {

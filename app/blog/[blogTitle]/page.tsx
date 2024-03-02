@@ -1,6 +1,5 @@
 import { type NextPage } from "next";
 import { type JSX } from "react";
-import { IoCalendarClearOutline } from "react-icons/io5";
 import Markup from "@/components/markup";
 import prisma from "@/lib";
 import { parseBlogTitleFromUrl } from "@/utils";
@@ -17,17 +16,17 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
   });
 
   return (
-    <div className="innerPage">
-      <div className="flex justify-between gap-4 sm:gap-0 items-center">
-        <h1 className="font-bold text-2xl text-ellipsis break-words">
-          {blogByTitle?.title!}
-        </h1>
-        <p className="text-sm font-light flex gap-2 items-center text-neutral-400">
-          <IoCalendarClearOutline />
+    <div className="page-inner">
+      <div className="page-header flex-col items-start">
+        <p className="text-neutral-500">
           {blogByTitle?.createdAt!.toLocaleDateString()}
         </p>
+
+        <h1 className="page-title">{blogByTitle?.title!}</h1>
       </div>
+
       <hr />
+
       <Markup rawMarkdown={blogByTitle?.content!} />
     </div>
   );

@@ -7,8 +7,8 @@ import { SlInfo } from "react-icons/sl";
 
 const Navbar: FC = (): JSX.Element => {
   return (
-    <nav className="sm:h-full py-4 sm:w-20 w-full flex sm:flex-col sm:gap-8 bg-neutral-100 border-r">
-      <div className="flex w-1/3 sm:w-full justify-center items-center">
+    <nav className="flex h-full items-center justify-around sm:flex-col sm:justify-normal sm:gap-8 sm:py-8">
+      <div className="flex w-1/3 justify-center sm:w-full">
         <Image
           className="rounded"
           src="/brook.jpeg"
@@ -17,24 +17,18 @@ const Navbar: FC = (): JSX.Element => {
           width="50"
         />
       </div>
-      <div className="flex text-2xl sm:w-full w-full justify-center items-center sm:flex-col gap-2">
-        <Link
-          href="/"
-          className="link flex gap-2 sm:w-full justify-center p-2 sm:hover:bg-neutral-200"
-        >
-          <IoHomeOutline title="Home" />
+
+      <div className="flex w-2/3 items-center gap-2 overflow-x-auto sm:w-full sm:flex-col sm:gap-4">
+        <Link className="nav-link" href="/">
+          <IoHomeOutline title="Go Home" size={24} />
         </Link>
-        <Link
-          href="/blog"
-          className="link flex gap-2 sm:w-full justify-center p-2 sm:hover:rounded sm:hover:bg-neutral-200"
-        >
-          <MdOutlineArticle title="Blog" />
+
+        <Link className="nav-link" href="/blog">
+          <MdOutlineArticle title="See All Blogs" size={24} />
         </Link>
-        <Link
-          href="/about"
-          className="link flex gap-2 sm:w-full justify-center p-2 sm:hover:rounded sm:hover:bg-neutral-200"
-        >
-          <SlInfo title="About" />
+
+        <Link className="nav-link" href="/about">
+          <SlInfo title="About Me" size={24} />
         </Link>
       </div>
     </nav>
