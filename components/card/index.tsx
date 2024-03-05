@@ -18,14 +18,14 @@ const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
 
   return (
     <div className="flex w-96 flex-col gap-4 rounded bg-neutral-800 p-4">
-      <h3 className="text-xl font-semibold">{title}</h3>
+      <h3 className="text-xl font-semibold text-white">{title}</h3>
 
-      <div className="text-sm text-neutral-500">
+      <div className="text-sm">
         <Markup rawMarkdown={stringCut(content, 150)} />
       </div>
 
       <div className="flex justify-between">
-        <span className="flex items-center gap-2">
+        <span className="flex items-center gap-2 text-neutral-500">
           <IoCalendarClearOutline />
           <p>{createdAt.toLocaleDateString()}</p>
         </span>
@@ -41,6 +41,7 @@ const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
             </span>
           </Link>
         )}
+
         {redirectLoading && (
           <AiOutlineLoading3Quarters
             className="animate-spin text-neutral-500"
