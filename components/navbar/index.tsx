@@ -10,7 +10,7 @@ const ThemeSwitch = dynamic(() => import("./theme-switch"), { ssr: false });
 
 const Navbar: FC = (): JSX.Element => {
   return (
-    <nav className="flex h-full items-center sm:flex-col sm:gap-8 sm:py-8">
+    <nav className="flex h-full items-center gap-2 sm:flex-col sm:gap-8 sm:py-8">
       <div className="flex w-1/3 justify-center sm:w-full">
         <Image
           className="rounded"
@@ -21,8 +21,8 @@ const Navbar: FC = (): JSX.Element => {
         />
       </div>
 
-      <div className="flex h-full w-2/3 items-center justify-around overflow-x-auto sm:w-full sm:flex-col">
-        <section className="flex h-2/3 flex-col gap-4">
+      <div className="flex h-full w-2/3 items-center gap-4 overflow-x-auto sm:w-full sm:flex-col sm:justify-around sm:gap-0">
+        <section className="flex gap-4 sm:h-2/3 sm:flex-col">
           <Link className="nav-link" href="/" title="Go Home">
             <IoHomeOutline size={24} />
           </Link>
@@ -36,7 +36,7 @@ const Navbar: FC = (): JSX.Element => {
           </Link>
         </section>
 
-        <section className="flex h-1/3 items-end">
+        <section className="flex items-center sm:h-1/3 sm:items-end">
           <ThemeSwitch />
         </section>
       </div>
