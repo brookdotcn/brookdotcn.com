@@ -29,7 +29,7 @@ const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
 
             return (
               <Prism
-                showLineNumbers={true}
+                showLineNumbers
                 language={languageIdentifier[1]}
                 style={gruvboxDark}
               >

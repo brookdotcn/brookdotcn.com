@@ -1,9 +1,12 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { type FC, type JSX } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { MdOutlineArticle } from "react-icons/md";
 import { SlInfo } from "react-icons/sl";
+
+const ThemeSwitch = dynamic(() => import("./theme-switch"), { ssr: false });
 
 const Navbar: FC = (): JSX.Element => {
   return (
@@ -18,18 +21,24 @@ const Navbar: FC = (): JSX.Element => {
         />
       </div>
 
-      <div className="flex w-2/3 items-center justify-center gap-2 overflow-x-auto sm:w-full sm:flex-col sm:justify-normal sm:gap-4">
-        <Link className="nav-link" href="/">
-          <IoHomeOutline title="Go Home" size={24} />
-        </Link>
+      <div className="flex h-full w-2/3 items-center justify-around overflow-x-auto sm:w-full sm:flex-col">
+        <section className="flex h-2/3 flex-col gap-4">
+          <Link className="nav-link" href="/" title="Go Home">
+            <IoHomeOutline size={24} />
+          </Link>
 
-        <Link className="nav-link" href="/blog">
-          <MdOutlineArticle title="See All Blogs" size={24} />
-        </Link>
+          <Link className="nav-link" href="/blog" title="See All Blogs">
+            <MdOutlineArticle size={24} />
+          </Link>
 
-        <Link className="nav-link" href="/about">
-          <SlInfo title="About Me" size={24} />
-        </Link>
+          <Link className="nav-link" href="/about" title="About Me">
+            <SlInfo size={24} />
+          </Link>
+        </section>
+
+        <section className="flex h-1/3 items-end">
+          <ThemeSwitch />
+        </section>
       </div>
     </nav>
   );

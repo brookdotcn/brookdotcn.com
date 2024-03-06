@@ -16,14 +16,17 @@ const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
   const [redirectLoading, setRedirectLoading] = useState<boolean>(false);
 
   return (
-    <div className="flex w-96 flex-col gap-4 rounded bg-neutral-800 p-4">
-      <h3 className="text-xl font-semibold text-white">{title}</h3>
+    <div className="flex w-96 flex-col gap-4 rounded bg-neutral-100 p-4 dark:bg-neutral-900">
+      <h3 className="text-xl font-semibold text-black dark:text-white">
+        {title}
+      </h3>
+
       <div className="text-sm text-neutral-500">
         {stringCut(description, 150)}
       </div>
 
       <div className="flex justify-between">
-        <span className="flex items-center gap-2 text-neutral-600">
+        <span className="flex items-center gap-2 text-neutral-400 dark:text-neutral-600">
           <IoCalendarClearOutline />
           <p>{createdAt.toLocaleDateString()}</p>
         </span>
