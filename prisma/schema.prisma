@@ -9,9 +9,10 @@ datasource db {
 }
 
 model Blog {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String   @db.MediumText
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @default("No description")
+  content     String   @db.MediumText
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

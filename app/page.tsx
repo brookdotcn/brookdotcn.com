@@ -25,6 +25,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
             title={blog.title}
             content={blog.content}
             createdAt={blog.createdAt}
+            description={blog.description}
           />
         );
       })}

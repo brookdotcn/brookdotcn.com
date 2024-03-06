@@ -6,12 +6,11 @@ import { useState, type FC, type JSX } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { MdOutlineReadMore } from "react-icons/md";
-import Markup from "@/components/markup";
 import { formatBlogTitleForUrl, stringCut } from "@/utils";
 
 const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
-  content,
   createdAt,
+  description,
   title,
 }): JSX.Element => {
   const [redirectLoading, setRedirectLoading] = useState<boolean>(false);
@@ -19,13 +18,12 @@ const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
   return (
     <div className="flex w-96 flex-col gap-4 rounded bg-neutral-800 p-4">
       <h3 className="text-xl font-semibold text-white">{title}</h3>
-
-      <div className="text-sm">
-        <Markup rawMarkdown={stringCut(content, 150)} />
+      <div className="text-sm text-neutral-500">
+        {stringCut(description, 150)}
       </div>
 
       <div className="flex justify-between">
-        <span className="flex items-center gap-2 text-neutral-500">
+        <span className="flex items-center gap-2 text-neutral-600">
           <IoCalendarClearOutline />
           <p>{createdAt.toLocaleDateString()}</p>
         </span>
