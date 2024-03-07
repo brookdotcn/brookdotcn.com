@@ -5,7 +5,7 @@ import Card from "@/components/card";
 import prisma from "@/lib";
 
 const IndexPage: NextPage = async (): Promise<JSX.Element> => {
-  const blogs = await prisma.blog.findMany();
+  const blogs = await prisma.blog.findMany({ orderBy: { createdAt: "desc" } });
 
   return (
     <section className="page">
@@ -18,17 +18,19 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         Be up to date on my latest blogs, left most recent.
       </p>
 
-      {blogs.map((blog) => {
-        return (
-          <Card
-            key={blog.id}
-            title={blog.title}
-            content={blog.content}
-            createdAt={blog.createdAt}
-            description={blog.description}
-          />
-        );
-      })}
+      <div className="flex min-w-full gap-4 overflow-x-auto">
+        {blogs.map((blog) => {
+          return (
+            <Card
+              key={blog.id}
+              title={blog.title}
+              content={blog.content}
+              createdAt={blog.createdAt}
+              description={blog.description}
+            />
+          );
+        })}
+      </div>
     </section>
   );
 };

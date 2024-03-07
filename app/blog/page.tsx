@@ -5,7 +5,7 @@ import Card from "@/components/card";
 import prisma from "@/lib";
 
 const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
-  const blogs = await prisma.blog.findMany();
+  const blogs = await prisma.blog.findMany({ orderBy: { createdAt: "desc" } });
 
   return (
     <div className="page">
@@ -16,17 +16,19 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
 
       <p className="page-subtitle">Discover what tickles your fancy.</p>
 
-      {blogs.map((blog) => {
-        return (
-          <Card
-            key={blog.id}
-            title={blog.title}
-            content={blog.content}
-            createdAt={blog.createdAt}
-            description={blog.description}
-          />
-        );
-      })}
+      <div className="flex min-w-full flex-wrap gap-4 overflow-x-auto">
+        {blogs.map((blog) => {
+          return (
+            <Card
+              key={blog.id}
+              title={blog.title}
+              content={blog.content}
+              createdAt={blog.createdAt}
+              description={blog.description}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

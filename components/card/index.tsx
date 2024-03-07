@@ -16,7 +16,7 @@ const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
   const [redirectLoading, setRedirectLoading] = useState<boolean>(false);
 
   return (
-    <div className="flex w-96 flex-col gap-4 rounded bg-neutral-100 p-4 dark:bg-neutral-900">
+    <div className="flex min-w-96 max-w-96 flex-col gap-4 rounded bg-neutral-100 p-4 dark:bg-neutral-900">
       <h3 className="text-xl font-semibold text-black dark:text-white">
         {title}
       </h3>
