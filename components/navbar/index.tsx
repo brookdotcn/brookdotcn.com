@@ -10,7 +10,7 @@ const ThemeSwitch = dynamic(() => import("./theme-switch"), { ssr: false });
 
 const Navbar: FC = (): JSX.Element => {
   return (
-    <nav className="flex h-full items-center gap-2 sm:flex-col sm:gap-8 sm:py-8">
+    <nav className="sticky left-0 top-0 flex h-16 flex-row items-center gap-2 bg-neutral-100 bg-opacity-75 backdrop-blur-md dark:bg-neutral-900 dark:bg-opacity-25 sm:h-screen sm:w-20 sm:flex-col sm:gap-8 sm:bg-opacity-100 sm:py-8 sm:backdrop-blur-none">
       <div className="flex w-1/3 justify-center sm:w-full">
         <Image
           className="rounded"

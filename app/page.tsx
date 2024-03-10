@@ -18,7 +18,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         Be up to date on my latest blogs, left most recent.
       </p>
 
-      <div className="flex min-w-full gap-4 overflow-x-auto">
+      <div className="flex gap-4 overflow-x-auto rounded bg-neutral-200 p-2 dark:bg-neutral-800">
         {blogs.map((blog) => {
           return (
             <Card

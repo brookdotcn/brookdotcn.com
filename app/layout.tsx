@@ -21,10 +21,8 @@ const IndexLayout: NextPage<Props> = ({ children }): JSX.Element => {
     <html lang="en" suppressHydrationWarning>
       <body className={GeistMono.className}>
         <Providers>
-          <main className="flex h-screen flex-col sm:flex-row">
-            <div className="h-16 w-screen sm:h-screen sm:w-24">
-              <Navbar />
-            </div>
+          <main className="flex min-h-screen flex-col sm:flex-row">
+            <Navbar />
 
             <div className="h-full w-full overflow-y-auto">{children}</div>
           </main>
