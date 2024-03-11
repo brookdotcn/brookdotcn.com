@@ -28,6 +28,15 @@ export const parseBlogTitleFromUrl = (titleFromUrl: string): string => {
     .join(" ")
     .replaceAll(
       /\w\S*/g,
-      (title) => title.charAt(0).toUpperCase() + title.slice(1).toLowerCase()
+      (title) => title.charAt(0).toUpperCase() + title.slice(1).toLowerCase(),
     );
+};
+
+/**
+ * @description using the raw markdown of a blog, calculate the minutes needed to read based on the average word count a minute (200).
+ * @param content raw markdown from blog.
+ * @returns rounded up number in minutes.
+ */
+export const determineTimeToRead = (content: string): number => {
+  return Math.round(content.split(" ").length / 200);
 };

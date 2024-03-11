@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import {
+  determineTimeToRead,
   formatBlogTitleForUrl,
   parseBlogTitleFromUrl,
   stringCut,
@@ -43,5 +44,16 @@ describe("parseBlogTitleFromUrl", () => {
   test("should return string with dashes replaced with whitespace", () => {
     const actual = parseBlogTitleFromUrl("hello-world");
     expect(actual).toBe("Hello World");
+  });
+});
+
+describe("determineTimeToRead", () => {
+  test("should return a rounded number", () => {
+    const input = `
+      a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a 
+      a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a 
+    `;
+    const actual = determineTimeToRead(input);
+    expect(actual).toBe(1);
   });
 });

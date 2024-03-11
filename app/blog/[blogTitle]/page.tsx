@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import { type JSX } from "react";
 import Markup from "@/components/markup";
 import prisma from "@/lib";
-import { parseBlogTitleFromUrl } from "@/utils";
+import { determineTimeToRead, parseBlogTitleFromUrl } from "@/utils";
 
 type Props = {
   params: { blogTitle: string };
@@ -17,10 +17,15 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
 
   return (
     <div className="page">
-      <div className="page-header flex-col items-start">
-        <p className="text-neutral-500">
-          {blogByTitle?.createdAt!.toLocaleDateString()}
-        </p>
+      <div className="page-header w-full flex-col items-start">
+        <div className="flex w-full flex-wrap justify-between gap-2 sm:gap-0">
+          <p className="text-neutral-500">
+            {blogByTitle?.createdAt!.toLocaleDateString()}
+          </p>
+          <span className="text-neutral-500">
+            {determineTimeToRead(blogByTitle?.content!)}m read
+          </span>
+        </div>
 
         <h1 className="page-title">{blogByTitle?.title!}</h1>
       </div>
