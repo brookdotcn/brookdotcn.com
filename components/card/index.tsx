@@ -1,20 +1,14 @@
-"use client";
-
 import { Blog } from "@prisma/client";
-import Link from "next/link";
-import { useState, type FC, type JSX } from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { type FC, type JSX } from "react";
 import { IoCalendarClearOutline } from "react-icons/io5";
-import { MdOutlineReadMore } from "react-icons/md";
-import { formatBlogTitleForUrl, stringCut } from "@/utils";
+import Action from "./action";
+import { stringCut } from "@/utils";
 
 const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
   createdAt,
   description,
   title,
 }): JSX.Element => {
-  const [redirectLoading, setRedirectLoading] = useState<boolean>(false);
-
   return (
     <div className="flex min-w-96 max-w-96 flex-col gap-4 rounded bg-neutral-100 p-4 dark:bg-neutral-900">
       <h3 className="text-xl font-semibold text-black dark:text-white">
@@ -31,24 +25,7 @@ const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
           <p>{createdAt.toLocaleDateString()}</p>
         </span>
 
-        {!redirectLoading && (
-          <Link
-            href={`/blog/${formatBlogTitleForUrl(title)}`}
-            onClick={() => setRedirectLoading(true)}
-          >
-            <span className="flex items-center gap-2 text-blue-400 hover:text-blue-500">
-              <MdOutlineReadMore size={24} />
-              Read More
-            </span>
-          </Link>
-        )}
-
-        {redirectLoading && (
-          <AiOutlineLoading3Quarters
-            className="animate-spin text-neutral-500"
-            size={24}
-          />
-        )}
+        <Action title={title} />
       </div>
     </div>
   );
