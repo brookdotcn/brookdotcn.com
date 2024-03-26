@@ -2,108 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-/* light mode */
-:root {
+body {
+  #markdown {
+    #inline-code {
+      padding: 1px 5px;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+  }
+
+  h2 {
+    font-size: larger;
+  }
+
+  ol {
+    list-style-type: decimal-leading-zero;
+    list-style-position: inside;
+  }
+
+  ul {
+    list-style-type: square;
+    list-style-position: inside;
+  }
+
+  a {
+    color: #60a5fa;
+  }
+
+  a:hover {
+    color: #3b82f6;
+  }
+
+  .regex-delimiter,
+  .regex-source {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+}
+
+[class="light"] body {
   color: black;
   background: rgb(255, 255, 255);
 
   #markdown {
     #inline-code {
-      padding: 5px;
-      font-weight: bold;
-      border-radius: 5px;
       background-color: rgb(225, 225, 225);
     }
 
     h2 {
       color: black;
-      font-size: larger;
     }
 
     p {
       color: rgb(80, 80, 80);
     }
 
-    ol {
-      list-style-type: lower-alpha;
-      list-style-position: inside;
-    }
-
-    ul {
-      list-style-type: square;
-      list-style-position: inside;
-    }
-
-    a {
-      color: #60a5fa;
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: #3b82f6;
-      text-decoration: none;
-    }
-
-    pre {
-      border-radius: 5px;
-    }
-
-    .regex-delimiter,
-    .regex-source {
-      background-color: rgba(0, 0, 0, 0) !important;
+    li {
+      color: rgb(80, 80, 80);
     }
   }
 }
 
-/* dark mode */
 [class="dark"] body {
   color: white;
-  background: rgb(13, 13, 13);
+  background: rgb(20, 20, 20);
 
   #markdown {
     #inline-code {
-      padding: 5px;
-      font-weight: bold;
-      border-radius: 5px;
       background-color: rgb(50, 50, 50);
     }
 
     h2 {
       color: white;
-      font-size: larger;
     }
 
     p {
       color: rgb(215, 215, 215);
     }
 
-    ol {
-      list-style-type: lower-alpha;
-      list-style-position: inside;
-    }
-
-    ul {
-      list-style-type: square;
-      list-style-position: inside;
-    }
-
-    a {
-      color: #60a5fa;
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: #3b82f6;
-      text-decoration: none;
-    }
-
-    pre {
-      border-radius: 5px;
-    }
-
-    .regex-delimiter,
-    .regex-source {
-      background-color: rgba(0, 0, 0, 0) !important;
+    li {
+      color: rgb(215, 215, 215);
     }
   }
 }
@@ -126,6 +104,6 @@
   }
 
   .nav-link {
-    @apply flex rounded border border-neutral-800 p-2 dark:border-neutral-600;
+    @apply flex rounded border border-neutral-800 p-2 text-black hover:!text-black dark:border-neutral-600 dark:text-white dark:hover:!text-white;
   }
 }

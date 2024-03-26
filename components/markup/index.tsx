@@ -1,7 +1,7 @@
 import { type FC, type JSX } from "react";
 import Markdown from "react-markdown";
 import { Prism } from "react-syntax-highlighter";
-import { gruvboxDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
 
 type MarkupProps = {
@@ -28,11 +28,7 @@ const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
             }
 
             return (
-              <Prism
-                showLineNumbers
-                language={languageIdentifier[1]}
-                style={gruvboxDark}
-              >
+              <Prism language={languageIdentifier[1]} style={vscDarkPlus}>
                 {children.toString().replace(/\n$/, "")}
               </Prism>
             );

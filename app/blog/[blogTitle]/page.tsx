@@ -1,4 +1,5 @@
 import { type NextPage } from "next";
+import { redirect } from "next/navigation";
 import { type JSX } from "react";
 import Markup from "@/components/markup";
 import prisma from "@/lib";
@@ -15,24 +16,26 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
     },
   });
 
+  if (!blogByTitle) redirect("/");
+
   return (
     <div className="page">
       <div className="page-header w-full flex-col items-start">
         <div className="flex w-full flex-wrap justify-between gap-2 sm:gap-0">
           <p className="text-neutral-500">
-            {blogByTitle?.createdAt!.toLocaleDateString()}
+            {blogByTitle.createdAt.toLocaleDateString()}
           </p>
           <span className="text-neutral-500">
-            {determineTimeToRead(blogByTitle?.content!)}m read
+            {determineTimeToRead(blogByTitle.content)}m read
           </span>
         </div>
 
-        <h1 className="page-title">{blogByTitle?.title!}</h1>
+        <h1 className="page-title">{blogByTitle.title}</h1>
       </div>
 
       <hr />
 
-      <Markup rawMarkdown={blogByTitle?.content!} />
+      <Markup rawMarkdown={blogByTitle.content} />
     </div>
   );
 };

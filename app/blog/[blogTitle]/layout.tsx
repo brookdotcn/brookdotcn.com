@@ -1,4 +1,5 @@
 import { type NextPage, type Metadata } from "next";
+import { redirect } from "next/navigation";
 import { type ReactNode, type JSX } from "react";
 import prisma from "@/lib";
 import { parseBlogTitleFromUrl } from "@/utils";
@@ -17,9 +18,11 @@ export const generateMetadata = async ({
     },
   });
 
+  if (!blogByTitle) return redirect("/");
+
   return {
-    description: blogByTitle?.content,
-    title: `${blogByTitle?.title} | brookdotcn`,
+    description: blogByTitle.content,
+    title: `${blogByTitle.title} | brookdotcn`,
   };
 };
 

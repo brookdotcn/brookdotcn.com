@@ -11,7 +11,11 @@ const AboutPage: NextPage = (): JSX.Element => {
         <GrContactInfo size={24} />
         <h1 className="page-title">Brook Nash</h1>
 
-        <Link href="https://github.com/brookdotcn" target="_blank">
+        <Link
+          className="text-black dark:text-white"
+          href="https://github.com/brookdotcn"
+          target="_blank"
+        >
           <PiGithubLogo size={18} />
         </Link>
       </div>

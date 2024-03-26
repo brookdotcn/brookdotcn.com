@@ -22,7 +22,7 @@ const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
       <div className="flex justify-between">
         <span className="flex items-center gap-2 text-neutral-400 dark:text-neutral-600">
           <IoCalendarClearOutline />
-          <p>{createdAt.toLocaleDateString()}</p>
+          <p>{createdAt.toDateString()}</p>
         </span>
 
         <Action title={title} />
