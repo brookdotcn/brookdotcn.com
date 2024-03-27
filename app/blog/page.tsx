@@ -25,6 +25,7 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
               content={blog.content}
               createdAt={blog.createdAt}
               description={blog.description}
+              tags={blog.tags}
             />
           );
         })}
