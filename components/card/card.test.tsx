@@ -4,6 +4,7 @@ import Card from "./index";
 
 const content = "This is content";
 const description = "This is a description";
+const tags = ["hello", "world"];
 const createdAt = new Date();
 
 const getLink = (): HTMLElement => {
@@ -20,6 +21,7 @@ describe("when the title is used for the href", () => {
         content={content}
         createdAt={createdAt}
         description={description}
+        tags={tags}
       />,
     );
     expect(getLink().getAttribute("href")).toBe("/blog/a-b-c");
@@ -32,6 +34,7 @@ describe("when the title is used for the href", () => {
         content={content}
         createdAt={createdAt}
         description={description}
+        tags={tags}
       />,
     );
     expect(getLink().getAttribute("href")).toBe("/blog/a-b-c");
