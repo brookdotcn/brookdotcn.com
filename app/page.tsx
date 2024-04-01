@@ -5,7 +5,10 @@ import Card from "@/components/card";
 import prisma from "@/lib";
 
 const IndexPage: NextPage = async (): Promise<JSX.Element> => {
-  const blogs = await prisma.blog.findMany({ orderBy: { createdAt: "desc" } });
+  const blogs = await prisma.blog.findMany({
+    include: { tags: true },
+    orderBy: { createdAt: "desc" },
+  });
 
   return (
     <section className="page">
@@ -24,7 +27,6 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
             <Card
               key={blog.id}
               title={blog.title}
-              content={blog.content}
               createdAt={blog.createdAt}
               description={blog.description}
               tags={blog.tags}

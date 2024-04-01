@@ -13,7 +13,15 @@ model Blog {
   title       String
   description String   @default("No description")
   content     String
-  tags        String[]
+  tags        Tag[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Tag {
+  id     Int    @id @default(autoincrement())
+  name   String
+  colour String
+  blogId Int
+  blog   Blog   @relation(fields: [blogId], references: [id])
 }

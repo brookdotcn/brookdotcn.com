@@ -1,9 +1,11 @@
-import { Blog } from "@prisma/client";
+import { type Blog, type Tag } from "@prisma/client";
 import { type FC, type JSX } from "react";
 import Action from "./action";
 import { stringCut } from "@/utils";
 
-const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
+type CardProps = Omit<Blog & { tags: Tag[] }, "id" | "content" | "updatedAt">;
+
+const Card: FC<CardProps> = ({
   createdAt,
   description,
   tags,
@@ -22,9 +24,12 @@ const Card: FC<Omit<Blog, "id" | "updatedAt">> = ({
       <div className="flex items-center justify-between">
         <span className="flex w-24 items-center gap-2 overflow-x-auto rounded bg-neutral-200 p-2 dark:bg-neutral-800">
           {tags.map((tag) => (
-            <span key={tag}>
-              <p className="rounded bg-neutral-300 px-2 dark:bg-neutral-900">
-                {tag}
+            <span key={tag.id}>
+              <p
+                className={`rounded px-2 dark:bg-neutral-900`}
+                style={{ backgroundColor: tag.colour }}
+              >
+                {tag.name}
               </p>
             </span>
           ))}
