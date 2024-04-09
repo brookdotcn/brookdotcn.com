@@ -31,7 +31,7 @@ const Card: FC<CardProps> = ({
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="flex w-1/2 items-center gap-2 overflow-x-auto rounded bg-neutral-200 p-2 dark:bg-neutral-800">
+        <span className="flex w-1/2 items-center gap-2 overflow-x-auto rounded">
           {tags.map((tag) => (
             <span key={tag.id}>
               <p
