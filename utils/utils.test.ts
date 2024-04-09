@@ -33,6 +33,11 @@ describe("formatBlogTitleForUrl", () => {
     const actual = formatBlogTitleForUrl("Hello world");
     expect(actual).toBe("hello-world");
   });
+
+  test("should return a string with no trailing whitespace", () => {
+    const actual = formatBlogTitleForUrl("Hello world ");
+    expect(actual).toBe("hello-world");
+  });
 });
 
 describe("parseBlogTitleFromUrl", () => {
@@ -48,11 +53,9 @@ describe("parseBlogTitleFromUrl", () => {
 });
 
 describe("determineTimeToRead", () => {
-  test("should return a rounded number", () => {
-    const input = `
-      a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a 
-      a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a 
-    `;
+  test("should return '1' for a less than 1 minute read", () => {
+    const input = "a a a a a a a a a a a a a a a a a a a a a a a a a a a";
+
     const actual = determineTimeToRead(input);
     expect(actual).toBe(1);
   });
