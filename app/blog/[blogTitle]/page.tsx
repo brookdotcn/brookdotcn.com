@@ -11,6 +11,7 @@ type Props = {
 
 const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
   const blogByTitle = await prisma.blog.findFirst({
+    include: { tags: true },
     where: {
       title: parseBlogTitleFromUrl(params.blogTitle),
     },
@@ -31,6 +32,19 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
         </div>
 
         <h1 className="page-title">{blogByTitle.title}</h1>
+
+        <span className="flex w-full items-center gap-2 overflow-x-auto rounded">
+          {blogByTitle.tags.map((tag) => (
+            <span key={tag.id}>
+              <p
+                className={`rounded px-2 dark:bg-neutral-900`}
+                style={{ backgroundColor: tag.colour }}
+              >
+                {tag.name}
+              </p>
+            </span>
+          ))}
+        </span>
       </div>
 
       <hr />
