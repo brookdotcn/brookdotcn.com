@@ -10,6 +10,14 @@ body {
       font-size: 14px;
       border-radius: 5px;
     }
+
+    pre {
+      background-color: rgb(25, 25, 25) !important;
+
+      span {
+        background-color: rgb(25, 25, 25) !important;
+      }
+    }
   }
 
   h2 {
