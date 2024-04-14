@@ -17,9 +17,8 @@ const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
         components={{
           code: ({ children, className, ...props }) => {
             if (!children) return;
-            const languageIdentifier = /language-(\w+)/.exec(className || "");
 
-            if (!languageIdentifier) {
+            if (!className) {
               return (
                 <code {...props} id="inline-code">
                   {children}
@@ -27,14 +26,23 @@ const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
               );
             }
 
+            const [languageIdentifier, fileName] = className
+              .split("-")
+              .slice(1);
+
             return (
-              <Prism
-                showLineNumbers
-                language={languageIdentifier[1]}
-                style={oneDark}
-              >
-                {children.toString().replace(/\n$/, "")}
-              </Prism>
+              <div>
+                <div className="w-full text-center text-neutral-500">
+                  {fileName}
+                </div>
+                <Prism
+                  showLineNumbers
+                  language={languageIdentifier}
+                  style={oneDark}
+                >
+                  {children.toString().replace(/\n$/, "")}
+                </Prism>
+              </div>
             );
           },
         }}

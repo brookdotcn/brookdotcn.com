@@ -12,6 +12,7 @@ body {
     }
 
     pre {
+      border-radius: 10px;
       background-color: rgb(25, 25, 25) !important;
 
       span {
