@@ -14,9 +14,9 @@ const ThemeSwitch: FC = (): JSX.Element => {
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       {theme === "light" ? (
-        <MdOutlineFlashlightOn size={24} />
+        <MdOutlineFlashlightOn size={22} />
       ) : (
-        <MdOutlineFlashlightOff size={24} />
+        <MdOutlineFlashlightOff size={22} />
       )}
     </button>
   );

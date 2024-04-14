@@ -104,6 +104,6 @@ body {
   }
 
   .nav-link {
-    @apply flex rounded border border-neutral-800 p-2 text-black hover:!text-black dark:border-neutral-600 dark:text-white dark:hover:!text-white;
+    @apply flex rounded p-1 text-black hover:bg-neutral-300 hover:!text-black dark:text-white dark:hover:bg-neutral-700 dark:hover:!text-white;
   }
 }
