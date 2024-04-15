@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import { type JSX } from "react";
 import { FaReact } from "react-icons/fa";
+import { GiSettingsKnobs } from "react-icons/gi";
 import { TbTimeDuration10 } from "react-icons/tb";
 import Card from "@/components/card";
 import prisma from "@/lib";
@@ -18,6 +19,18 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
       tags: {
         some: {
           name: "react",
+        },
+      },
+    },
+  });
+
+  const configurationBlogs = await prisma.blog.findMany({
+    include: { tags: true },
+    orderBy: { createdAt: "desc" },
+    where: {
+      tags: {
+        some: {
+          name: "configuration",
         },
       },
     },
@@ -63,6 +76,32 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
 
         <div className="flex gap-4 overflow-x-auto rounded">
           {reactBlogs.map((blog) => {
+            return (
+              <Card
+                key={blog.id}
+                title={blog.title}
+                createdAt={blog.createdAt}
+                description={blog.description}
+                tags={blog.tags}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="page-header">
+          <GiSettingsKnobs size={24} />
+          <h1 className="page-title">Configuration</h1>
+        </div>
+
+        <p className="page-subtitle">
+          Tools or settings I may use across my devices, kept updated whenever I
+          am able to.
+        </p>
+
+        <div className="flex gap-4 overflow-x-auto rounded">
+          {configurationBlogs.map((blog) => {
             return (
               <Card
                 key={blog.id}
