@@ -1,7 +1,6 @@
 import "./index.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GeistMono } from "geist/font/mono";
 import { type NextPage, type Metadata } from "next";
 import { type ReactNode, type JSX } from "react";
 import Navbar from "@/components/navbar";
@@ -19,7 +18,7 @@ type Props = {
 const IndexLayout: NextPage<Props> = ({ children }): JSX.Element => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={GeistMono.className}>
+      <body>
         <Providers>
           <main className="flex min-h-screen flex-col sm:flex-row">
             <Navbar />

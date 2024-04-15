@@ -12,7 +12,7 @@ const Card: FC<CardProps> = ({
   title,
 }): JSX.Element => {
   return (
-    <div className="flex min-w-96 max-w-96 flex-col gap-4 rounded bg-neutral-100 p-4 dark:bg-neutral-900">
+    <div className="flex min-w-96 max-w-96 flex-col justify-between gap-4 rounded bg-neutral-100 p-4 dark:bg-neutral-900">
       <div className="flex w-full justify-between">
         <h3
           className="text-xl font-semibold text-black dark:text-white"
