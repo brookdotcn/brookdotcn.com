@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import { type JSX } from "react";
 import { TbSelectAll } from "react-icons/tb";
 import Card from "@/components/card";
+import Search from "@/components/search";
 import prisma from "@/lib";
 
 const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
@@ -12,6 +13,10 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
 
   return (
     <div className="page">
+      <div className="relative w-1/2">
+        <Search />
+      </div>
+
       <div className="page-header">
         <TbSelectAll size={24} />
         <h1 className="page-title">All Blogs</h1>
