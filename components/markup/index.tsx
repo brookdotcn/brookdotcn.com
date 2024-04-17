@@ -32,7 +32,7 @@ const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
 
             return (
               <div>
-                <div className="w-full text-center text-neutral-500">
+                <div className="w-full text-center text-zinc-500">
                   {fileName}
                 </div>
                 <Prism

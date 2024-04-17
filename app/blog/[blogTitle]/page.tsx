@@ -23,10 +23,10 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
     <div className="page">
       <div className="page-header w-full flex-col items-start">
         <div className="flex w-full flex-wrap justify-between gap-2 sm:gap-0">
-          <p className="text-neutral-500">
+          <p className="text-zinc-500">
             {blogByTitle.createdAt.toLocaleDateString()}
           </p>
-          <span className="text-neutral-500">
+          <span className="text-zinc-500">
             {determineTimeToRead(blogByTitle.content)}m read
           </span>
         </div>
@@ -37,7 +37,7 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
           {blogByTitle.tags.map((tag) => (
             <span key={tag.id}>
               <p
-                className={`rounded px-2 dark:bg-neutral-900`}
+                className={`rounded px-2`}
                 style={{ backgroundColor: tag.colour }}
               >
                 {tag.name}

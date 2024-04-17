@@ -23,25 +23,25 @@ const Search: FC = (): JSX.Element => {
   }, [debouncedValue]);
 
   return (
-    <div className="flex w-full items-center gap-2 rounded border p-1 dark:border-neutral-700">
+    <div className="flex w-full items-center gap-2 rounded border border-zinc-400 bg-white p-1 dark:border-zinc-700 dark:bg-zinc-900">
       <input
         type="text"
         placeholder="Search by title or tag..."
         value={searchValue}
         onChange={(e) => setSearchValue(e.currentTarget.value)}
-        className="w-full bg-transparent focus:outline-none"
+        className="w-full focus:outline-none dark:bg-zinc-900"
       />
       <HiEllipsisVertical size={16} />
       <CiSearch size={24} />
       {debouncedValue && (
-        <div className="absolute left-0 top-8 max-h-44 w-full rounded border bg-white p-1 dark:border-neutral-700 dark:bg-neutral-900">
-          <div className="flex flex-col gap-2">
+        <div className="absolute left-0 top-8 max-h-44 w-full border border-zinc-400 bg-white p-2 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
+          <div className="flex flex-col gap-4">
             {foundBlogs.length > 0 &&
               foundBlogs.map((blog) => (
                 <a
                   key={blog.id}
                   href={`blog/${formatBlogTitleForUrl(blog.title)}`}
-                  className="rounded border p-1 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
+                  className="rounded border p-1 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
                 >
                   {blog.title}
                 </a>

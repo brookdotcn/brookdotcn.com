@@ -13,7 +13,7 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
 
   return (
     <div className="page">
-      <div className="relative w-1/2">
+      <div className="relative sm:w-1/2">
         <Search />
       </div>
 

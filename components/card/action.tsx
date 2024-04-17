@@ -25,7 +25,7 @@ const Action: FC<{ title: string }> = ({ title }): JSX.Element => {
 
       {redirectLoading && (
         <AiOutlineLoading3Quarters
-          className="animate-spin text-neutral-500"
+          className="animate-spin text-zinc-500"
           size={24}
         />
       )}
