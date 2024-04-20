@@ -21,17 +21,17 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
   if (!blogByTitle) redirect("/");
 
   return (
-    <div className="container flex flex-col gap-8 py-12">
+    <div className="page-container">
       <div className="flex w-full flex-wrap justify-between gap-2 sm:gap-0">
-        <p className="text-zinc-400 dark:text-zinc-600">
+        <p className="page-block-subtitle">
           {blogByTitle.createdAt.toLocaleDateString()}
         </p>
-        <span className="text-zinc-400 dark:text-zinc-600">
+        <span className="page-block-subtitle">
           {determineTimeToRead(blogByTitle.content)}m read
         </span>
       </div>
 
-      <h1 className="w-full text-center text-4xl font-bold sm:text-6xl">
+      <h1 className="page-block-title w-full text-center sm:text-6xl">
         {blogByTitle.title}
       </h1>
 

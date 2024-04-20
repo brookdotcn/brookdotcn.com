@@ -22,12 +22,12 @@ const Navbar: FC = (): JSX.Element => {
 
       <div className="flex h-full w-2/3 items-center justify-center gap-4 overflow-x-auto sm:w-full sm:flex-col sm:justify-around sm:gap-0">
         <section className="flex h-2/6 items-center gap-4 sm:h-full sm:flex-col">
-          <Link className="nav-link" href="/" title="Go Home">
-            <Home />
+          <Link href="/" title="Go Home">
+            <Home className="hover:text-zinc-400" />
           </Link>
 
-          <Link className="nav-link" href="/blog" title="See All Blogs">
-            <Newspaper />
+          <Link href="/blog" title="See All Blogs">
+            <Newspaper className="hover:text-zinc-400" />
           </Link>
 
           <Separator className="hidden sm:block" />
@@ -38,7 +38,7 @@ const Navbar: FC = (): JSX.Element => {
             title="See My Twitter"
             target="_blank"
           >
-            <Twitter />
+            <Twitter className="hover:text-zinc-400" />
           </Link>
 
           <Link
@@ -47,7 +47,7 @@ const Navbar: FC = (): JSX.Element => {
             title="See My GitHub"
             target="_blank"
           >
-            <Github />
+            <Github className="hover:text-zinc-400" />
           </Link>
 
           <Separator className="hidden sm:block" />

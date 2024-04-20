@@ -11,18 +11,16 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
   });
 
   return (
-    <div className="container flex flex-col gap-8 py-12">
-      <div className="flex flex-col gap-4">
-        <h1 className="text-4xl font-bold">All Blogs</h1>
+    <div className="page-container">
+      <div className="page-block">
+        <h1 className="page-block-title">All Blogs</h1>
 
-        <p className="text-zinc-400 dark:text-zinc-600">
-          Discover what tickles your fancy.
-        </p>
+        <p className="page-block-subtitle">Discover what tickles your fancy.</p>
       </div>
 
       <Search blogs={blogs} />
 
-      <div className="flex min-w-full flex-wrap gap-4 overflow-x-auto">
+      <div className="flex min-w-full flex-wrap gap-4">
         {blogs.map((blog) => {
           return (
             <BlogCard

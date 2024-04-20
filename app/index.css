@@ -60,3 +60,25 @@
     }
   }
 }
+
+@layer components {
+  .page-container {
+    @apply container flex flex-col gap-8 py-12;
+  }
+
+  .page-block {
+    @apply flex flex-col gap-4;
+  }
+
+  .page-block-title {
+    @apply text-4xl font-bold;
+  }
+
+  .page-block-subtitle {
+    @apply text-zinc-400 dark:text-zinc-600;
+  }
+
+  .page-block-scrollable {
+    @apply flex gap-4 overflow-x-auto rounded;
+  }
+}

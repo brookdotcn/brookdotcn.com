@@ -34,15 +34,15 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
   });
 
   return (
-    <section className="container flex flex-col gap-8 py-12">
-      <div className="flex flex-col gap-4">
-        <h1 className="text-4xl font-bold">Recent Blogs</h1>
+    <section className="page-container">
+      <div className="page-block">
+        <h1 className="page-block-title">Recent Blogs</h1>
 
-        <p className="text-zinc-400 dark:text-zinc-600">
+        <p className="page-block-subtitle">
           Be up to date on my latest blogs, left most recent.
         </p>
 
-        <div className="flex gap-4 overflow-x-auto rounded">
+        <div className="page-block-scrollable">
           {recentBlogs.map((blog) => {
             return (
               <BlogCard
@@ -57,15 +57,15 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <h1 className="text-4xl font-bold">React</h1>
+      <div className="page-block">
+        <h1 className="page-block-title">React</h1>
 
-        <p className="text-zinc-400 dark:text-zinc-600">
+        <p className="page-block-subtitle">
           Blogs containing information on React, one of the most popular tools
           in web development.
         </p>
 
-        <div className="flex gap-4 overflow-x-auto rounded">
+        <div className="page-block-scrollable">
           {reactBlogs.map((blog) => {
             return (
               <BlogCard
@@ -80,15 +80,15 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <h1 className="text-4xl font-bold">Configuration</h1>
+      <div className="page-block">
+        <h1 className="page-block-title">Configuration</h1>
 
-        <p className="text-zinc-400 dark:text-zinc-600">
+        <p className="page-block-subtitle">
           Tools or settings I may use across my devices, kept updated whenever I
           am able to.
         </p>
 
-        <div className="flex gap-4 overflow-x-auto rounded">
+        <div className="page-block-scrollable">
           {configurationBlogs.map((blog) => {
             return (
               <BlogCard

@@ -16,7 +16,7 @@ const ThemeSwitch: FC = (): JSX.Element => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Palette className="cursor-pointer" />
+        <Palette className="cursor-pointer hover:text-zinc-400" />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-24" align="start">
         <DropdownMenuCheckboxItem

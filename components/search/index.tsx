@@ -37,15 +37,14 @@ const Search: FC<SearchProps> = ({ blogs }): JSX.Element => {
             <CommandGroup>
               {blogs.map((blog) => (
                 <Link
+                  className="hover:text-zinc-500"
                   key={blog.id}
                   href={`/blog/${formatBlogTitleForUrl(blog.title)}`}
-                  className="text-inherit hover:text-inherit"
                 >
                   <CommandItem
                     value={blog.title}
                     onSelect={() => {
                       router.push(`/blog/${formatBlogTitleForUrl(blog.title)}`);
-                      setOpen(false);
                     }}
                   >
                     <p>{blog.title}</p>
