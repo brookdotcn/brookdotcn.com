@@ -3,7 +3,7 @@ import Link from "next/link";
 import { type HTMLAttributes, forwardRef, type FC } from "react";
 import { Badge } from "./badge";
 import { Button } from "./button";
-import { cn, formatBlogTitleForUrl } from "@/utils";
+import { cn, formatBlogTitleForUrl, stringCut } from "@/utils";
 
 const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
@@ -87,9 +87,9 @@ const BlogCard: FC<BlogCardProps> = ({
   title,
 }): JSX.Element => {
   return (
-    <Card className="flex min-w-[450px] max-w-[450px] flex-col justify-between">
+    <Card className="flex min-w-[315px] max-w-[315px] flex-col justify-between">
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle>{stringCut(title, 22)}</CardTitle>
         <CardDescription>{createdAt.toLocaleDateString()}</CardDescription>
       </CardHeader>
       <CardContent className="text-zinc-500">{description}</CardContent>

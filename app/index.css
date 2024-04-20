@@ -4,11 +4,11 @@
 
 @layer base {
   [class="light"] body {
-    @apply bg-zinc-200 text-zinc-950;
+    @apply bg-zinc-100 text-zinc-950;
 
     #markdown {
       #inline-code {
-        @apply bg-zinc-200;
+        @apply !bg-zinc-200;
       }
     }
   }
@@ -18,7 +18,7 @@
 
     #markdown {
       #inline-code {
-        @apply bg-zinc-800;
+        @apply !bg-zinc-800;
       }
     }
   }
@@ -58,27 +58,5 @@
     #inline-code {
       @apply rounded !bg-zinc-300 p-1 text-sm dark:!bg-zinc-800;
     }
-  }
-}
-
-@layer components {
-  .page {
-    @apply flex flex-col gap-4 px-4 py-12 sm:px-16 md:px-32 lg:px-44 xl:px-96;
-  }
-
-  .page-header {
-    @apply flex w-max items-center gap-4;
-  }
-
-  .page-title {
-    @apply text-2xl font-bold text-black dark:text-white;
-  }
-
-  .page-subtitle {
-    @apply text-sm text-zinc-500;
-  }
-
-  .nav-link {
-    @apply flex rounded p-1 text-black hover:bg-zinc-300 hover:!text-black dark:text-white dark:hover:bg-zinc-700 dark:hover:!text-white;
   }
 }

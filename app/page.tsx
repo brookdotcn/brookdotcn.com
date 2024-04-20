@@ -1,6 +1,4 @@
-import { Github } from "lucide-react";
 import { type NextPage } from "next";
-import Link from "next/link";
 import { type JSX } from "react";
 import BlogCard from "@/components/ui/card";
 import prisma from "@/lib";
@@ -36,36 +34,11 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
   });
 
   return (
-    <section className="page gap-8">
+    <section className="container flex flex-col gap-8 py-12">
       <div className="flex flex-col gap-4">
-        <div className="page-header">
-          <h1 className="page-title">Brook Nash</h1>
+        <h1 className="text-4xl font-bold">Recent Blogs</h1>
 
-          <Link
-            className="text-black dark:text-white"
-            href="https://github.com/brookdotcn"
-            target="_blank"
-          >
-            <Github />
-          </Link>
-        </div>
-
-        <p className="page-subtitle">A little about me.</p>
-
-        <p>
-          Hello! I&apos;m a twenty two year old software engineer from the
-          United Kingdom (Wales in particular) and this is the site I use to
-          document my learnings and findings in all things software &
-          technology.
-        </p>
-      </div>
-
-      <div className="flex flex-col gap-4">
-        <div className="page-header">
-          <h1 className="page-title">Recent Blogs</h1>
-        </div>
-
-        <p className="page-subtitle">
+        <p className="text-zinc-400 dark:text-zinc-600">
           Be up to date on my latest blogs, left most recent.
         </p>
 
@@ -85,11 +58,9 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="page-header">
-          <h1 className="page-title">React</h1>
-        </div>
+        <h1 className="text-4xl font-bold">React</h1>
 
-        <p className="page-subtitle">
+        <p className="text-zinc-400 dark:text-zinc-600">
           Blogs containing information on React, one of the most popular tools
           in web development.
         </p>
@@ -110,11 +81,9 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="page-header">
-          <h1 className="page-title">Configuration</h1>
-        </div>
+        <h1 className="text-4xl font-bold">Configuration</h1>
 
-        <p className="page-subtitle">
+        <p className="text-zinc-400 dark:text-zinc-600">
           Tools or settings I may use across my devices, kept updated whenever I
           am able to.
         </p>

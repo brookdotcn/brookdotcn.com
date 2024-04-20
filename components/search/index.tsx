@@ -27,7 +27,7 @@ const Search: FC<SearchProps> = ({ blogs }): JSX.Element => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button>Search</Button>
+        <Button className="w-24">Search</Button>
       </PopoverTrigger>
       <PopoverContent className="w-max p-0" side="bottom" align="start">
         <Command>
