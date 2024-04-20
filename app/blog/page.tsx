@@ -1,6 +1,6 @@
+import { Rows4 } from "lucide-react";
 import { type NextPage } from "next";
 import { type JSX } from "react";
-import { TbSelectAll } from "react-icons/tb";
 import Search from "@/components/search";
 import BlogCard from "@/components/ui/card";
 import prisma from "@/lib";
@@ -14,7 +14,7 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
   return (
     <div className="page">
       <div className="page-header">
-        <TbSelectAll size={24} />
+        <Rows4 />
         <h1 className="page-title">All Blogs</h1>
       </div>
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { type Tag, type Blog } from "@prisma/client";
-import { TextSearch } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FC, type JSX } from "react";
@@ -28,10 +27,7 @@ const Search: FC<SearchProps> = ({ blogs }): JSX.Element => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button className="flex gap-2">
-          <TextSearch />
-          Search
-        </Button>
+        <Button>Search</Button>
       </PopoverTrigger>
       <PopoverContent className="w-max p-0" side="bottom" align="start">
         <Command>

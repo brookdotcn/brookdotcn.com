@@ -1,14 +1,13 @@
+import { CircleUser, Github } from "lucide-react";
 import { type NextPage } from "next";
 import Link from "next/link";
 import { type JSX } from "react";
-import { GrContactInfo } from "react-icons/gr";
-import { PiGithubLogo } from "react-icons/pi";
 
 const AboutPage: NextPage = (): JSX.Element => {
   return (
     <div className="page">
       <div className="page-header">
-        <GrContactInfo size={24} />
+        <CircleUser />
         <h1 className="page-title">Brook Nash</h1>
 
         <Link
@@ -16,7 +15,7 @@ const AboutPage: NextPage = (): JSX.Element => {
           href="https://github.com/brookdotcn"
           target="_blank"
         >
-          <PiGithubLogo size={18} />
+          <Github />
         </Link>
       </div>
 

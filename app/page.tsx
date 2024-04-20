@@ -1,8 +1,6 @@
+import { Clock9, CodeXml, Cog } from "lucide-react";
 import { type NextPage } from "next";
 import { type JSX } from "react";
-import { FaReact } from "react-icons/fa";
-import { GiSettingsKnobs } from "react-icons/gi";
-import { TbTimeDuration10 } from "react-icons/tb";
 import BlogCard from "@/components/ui/card";
 import prisma from "@/lib";
 
@@ -40,7 +38,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
     <section className="page gap-12">
       <div className="flex flex-col gap-4">
         <div className="page-header">
-          <TbTimeDuration10 size={24} />
+          <Clock9 />
           <h1 className="page-title">Recent Blogs</h1>
         </div>
 
@@ -65,7 +63,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
 
       <div className="flex flex-col gap-4">
         <div className="page-header">
-          <FaReact size={24} />
+          <CodeXml />
           <h1 className="page-title">React</h1>
         </div>
 
@@ -91,7 +89,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
 
       <div className="flex flex-col gap-4">
         <div className="page-header">
-          <GiSettingsKnobs size={24} />
+          <Cog />
           <h1 className="page-title">Configuration</h1>
         </div>
 
