@@ -3,7 +3,7 @@ import { type JSX } from "react";
 import { FaReact } from "react-icons/fa";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { TbTimeDuration10 } from "react-icons/tb";
-import Card from "@/components/card";
+import BlogCard from "@/components/ui/card";
 import prisma from "@/lib";
 
 const IndexPage: NextPage = async (): Promise<JSX.Element> => {
@@ -51,7 +51,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         <div className="flex gap-4 overflow-x-auto rounded">
           {recentBlogs.map((blog) => {
             return (
-              <Card
+              <BlogCard
                 key={blog.id}
                 title={blog.title}
                 createdAt={blog.createdAt}
@@ -77,7 +77,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         <div className="flex gap-4 overflow-x-auto rounded">
           {reactBlogs.map((blog) => {
             return (
-              <Card
+              <BlogCard
                 key={blog.id}
                 title={blog.title}
                 createdAt={blog.createdAt}
@@ -103,7 +103,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         <div className="flex gap-4 overflow-x-auto rounded">
           {configurationBlogs.map((blog) => {
             return (
-              <Card
+              <BlogCard
                 key={blog.id}
                 title={blog.title}
                 createdAt={blog.createdAt}

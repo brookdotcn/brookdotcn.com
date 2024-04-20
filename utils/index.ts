@@ -1,3 +1,10 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export const cn = (...inputs: ClassValue[]): string => {
+  return twMerge(clsx(inputs));
+};
+
 export const stringCut = (str: string, len: number): string => {
   return str.length > len ? str.slice(0, len).trim() + "..." : str;
 };
