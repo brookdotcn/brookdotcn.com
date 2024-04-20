@@ -1,5 +1,6 @@
 import "./index.css";
 
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { type NextPage, type Metadata } from "next";
 import { type ReactNode, type JSX } from "react";
@@ -26,6 +27,7 @@ const IndexLayout: NextPage<Props> = ({ children }): JSX.Element => {
             <div className="h-full w-full overflow-y-auto">{children}</div>
           </main>
 
+          <Analytics />
           <SpeedInsights />
         </Providers>
       </body>
