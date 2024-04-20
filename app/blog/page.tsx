@@ -14,7 +14,6 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
   return (
     <div className="page">
       <div className="page-header">
-        <Rows4 />
         <h1 className="page-title">All Blogs</h1>
       </div>
 

@@ -31,9 +31,11 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
           </span>
         </div>
 
-        <h1 className="page-title">{blogByTitle.title}</h1>
+        <h1 className="page-title w-full text-center text-4xl sm:text-6xl">
+          {blogByTitle.title}
+        </h1>
 
-        <span className="flex w-full items-center gap-2 overflow-x-auto rounded">
+        <span className="flex w-full items-center justify-center gap-2 overflow-x-auto rounded">
           {blogByTitle.tags.map((tag) => (
             <span key={tag.id}>
               <p
