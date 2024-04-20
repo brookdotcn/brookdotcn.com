@@ -1,25 +1,47 @@
 "use client";
 
+import { Palette } from "lucide-react";
 import { useTheme } from "next-themes";
 import { type FC, type JSX } from "react";
-import { Switch } from "../ui/switch";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 const ThemeSwitch: FC = (): JSX.Element => {
-  const { setTheme, systemTheme, theme } = useTheme();
-
-  const determineThemeToSwitchTo = (): void => {
-    if (theme === "system") {
-      return setTheme(systemTheme === "light" ? "dark" : "light");
-    }
-
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const { setTheme, theme } = useTheme();
 
   return (
-    <Switch
-      checked={theme === "dark"}
-      onCheckedChange={determineThemeToSwitchTo}
-    />
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Palette className="cursor-pointer" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-24" align="start">
+        <DropdownMenuCheckboxItem
+          className="cursor-pointer"
+          checked={theme === "system"}
+          onCheckedChange={() => setTheme("system")}
+        >
+          System
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          className="cursor-pointer"
+          checked={theme === "light"}
+          onCheckedChange={() => setTheme("light")}
+        >
+          Light
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          className="cursor-pointer"
+          checked={theme === "dark"}
+          onCheckedChange={() => setTheme("dark")}
+        >
+          Dark
+        </DropdownMenuCheckboxItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 
