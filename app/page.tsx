@@ -21,13 +21,13 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
     },
   });
 
-  const configurationBlogs = await prisma.blog.findMany({
+  const guideBlogs = await prisma.blog.findMany({
     include: { tags: true },
     orderBy: { createdAt: "desc" },
     where: {
       tags: {
         some: {
-          name: "configuration",
+          name: "guide",
         },
       },
     },
@@ -36,7 +36,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
   return (
     <section className="page-container">
       <div className="page-block">
-        <h1 className="page-block-title">Recent Blogs</h1>
+        <h1 className="page-block-title">Recent</h1>
 
         <p className="page-block-subtitle">
           Be up to date on my latest blogs, left most recent.
@@ -81,7 +81,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
       </div>
 
       <div className="page-block">
-        <h1 className="page-block-title">Configuration</h1>
+        <h1 className="page-block-title">Guide</h1>
 
         <p className="page-block-subtitle">
           Tools or settings I may use across my devices, kept updated whenever I
@@ -89,7 +89,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         </p>
 
         <div className="page-block-scrollable">
-          {configurationBlogs.map((blog) => {
+          {guideBlogs.map((blog) => {
             return (
               <BlogCard
                 key={blog.id}

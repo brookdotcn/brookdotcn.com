@@ -13,7 +13,7 @@ const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
   return (
     <div className="page-container">
       <div className="page-block">
-        <h1 className="page-block-title">All Blogs</h1>
+        <h1 className="page-block-title">Blogs</h1>
 
         <p className="page-block-subtitle">Discover what tickles your fancy.</p>
       </div>
