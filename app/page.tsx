@@ -39,7 +39,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         <h1 className="page-block-title">Recent</h1>
 
         <p className="page-block-subtitle">
-          Be up to date on my latest blogs, left most recent.
+          Be up to date on my ten latest blogs, left most recent.
         </p>
 
         <div className="page-block-scrollable">
@@ -84,8 +84,8 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         <h1 className="page-block-title">Guide</h1>
 
         <p className="page-block-subtitle">
-          Tools or settings I may use across my devices, kept updated whenever I
-          am able to.
+          Instructional blogs to learn new things, based on whatever I find to
+          be interesting.
         </p>
 
         <div className="page-block-scrollable">

@@ -89,7 +89,7 @@ const BlogCard: FC<BlogCardProps> = ({
   return (
     <Card className="flex min-w-[315px] max-w-[315px] flex-col justify-between">
       <CardHeader>
-        <CardTitle>{stringCut(title, 21)}</CardTitle>
+        <CardTitle>{stringCut(title, 18)}</CardTitle>
         <CardDescription>{createdAt.toLocaleDateString()}</CardDescription>
       </CardHeader>
       <CardContent className="text-zinc-500">{description}</CardContent>
