@@ -1,6 +1,5 @@
 "use client";
 
-import { type Tag, type Blog } from "@prisma/client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FC, type JSX } from "react";
@@ -14,10 +13,11 @@ import {
   CommandList,
 } from "../ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { type BlogWithTags } from "@/types";
 import { formatBlogTitleForUrl } from "@/utils";
 
 type SearchProps = {
-  blogs: Omit<Blog & { tags: Tag[] }, "content" | "updatedAt">[];
+  blogs: Omit<BlogWithTags, "content" | "updatedAt">[];
 };
 
 const Search: FC<SearchProps> = ({ blogs }): JSX.Element => {

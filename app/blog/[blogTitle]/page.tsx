@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import { redirect } from "next/navigation";
 import { type JSX } from "react";
 import Markup from "@/components/markup";
+import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib";
 import { determineTimeToRead, parseBlogTitleFromUrl } from "@/utils";
@@ -37,14 +38,16 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
 
       <span className="flex w-full items-center justify-center gap-2 overflow-x-auto rounded">
         {blogByTitle.tags.map((tag) => (
-          <span key={tag.id}>
-            <p
-              className={`rounded px-2`}
-              style={{ backgroundColor: tag.colour }}
-            >
-              {tag.name}
-            </p>
-          </span>
+          <Badge
+            key={tag.id}
+            className="text-zinc-950 dark:text-white"
+            style={{
+              backgroundColor: tag.colour,
+              border: `2px solid ${tag.colour}`,
+            }}
+          >
+            {tag.name}
+          </Badge>
         ))}
       </span>
 

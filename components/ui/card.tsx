@@ -1,9 +1,8 @@
-import { type Blog, type Tag } from "@prisma/client";
-import Link from "next/link";
 import { type HTMLAttributes, forwardRef, type FC } from "react";
+import BlogCardAction from "../card-action";
 import { Badge } from "./badge";
-import { Button } from "./button";
-import { cn, formatBlogTitleForUrl, stringCut } from "@/utils";
+import { type BlogWithTags } from "@/types";
+import { cn, stringCut } from "@/utils";
 
 const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
@@ -75,10 +74,7 @@ const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 );
 CardFooter.displayName = "CardFooter";
 
-type BlogCardProps = Omit<
-  Blog & { tags: Tag[] },
-  "id" | "content" | "updatedAt"
->;
+type BlogCardProps = Omit<BlogWithTags, "id" | "content" | "updatedAt">;
 
 const BlogCard: FC<BlogCardProps> = ({
   createdAt,
@@ -99,16 +95,17 @@ const BlogCard: FC<BlogCardProps> = ({
             <Badge
               key={tag.id}
               className="text-zinc-950 dark:text-white"
-              style={{ backgroundColor: tag.colour }}
+              style={{
+                backgroundColor: tag.colour,
+                border: `2px solid ${tag.colour}`,
+              }}
             >
               {tag.name}
             </Badge>
           ))}
         </div>
 
-        <Link href={`/blog/${formatBlogTitleForUrl(title)}`}>
-          <Button>Read More</Button>
-        </Link>
+        <BlogCardAction title={title} />
       </CardFooter>
     </Card>
   );
