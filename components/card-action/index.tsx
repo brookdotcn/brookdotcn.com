@@ -21,7 +21,9 @@ const BlogCardAction: FC<{ title: string }> = ({ title }): JSX.Element => {
       )}
 
       {redirectLoading && (
-        <LoaderCircle className="animate-spin text-neutral-500" size={28} />
+        <Button variant="ghost" disabled>
+          <LoaderCircle className="animate-spin text-neutral-500" size={28} />
+        </Button>
       )}
     </>
   );

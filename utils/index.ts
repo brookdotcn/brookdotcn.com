@@ -5,10 +5,6 @@ export const cn = (...inputs: ClassValue[]): string => {
   return twMerge(clsx(inputs));
 };
 
-export const stringCut = (str: string, len: number): string => {
-  return str.length > len ? str.slice(0, len).trim() + "..." : str;
-};
-
 export const formatBlogTitleForUrl = (title: string): string => {
   return title.toLocaleLowerCase().trim().split(" ").join("-");
 };

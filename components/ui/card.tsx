@@ -2,7 +2,7 @@ import { type HTMLAttributes, forwardRef, type FC } from "react";
 import BlogCardAction from "../card-action";
 import { Badge } from "./badge";
 import { type BlogWithTags } from "@/types";
-import { cn, stringCut } from "@/utils";
+import { cn } from "@/utils";
 
 const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
@@ -85,7 +85,9 @@ const BlogCard: FC<BlogCardProps> = ({
   return (
     <Card className="flex min-w-[315px] max-w-[315px] flex-col justify-between">
       <CardHeader>
-        <CardTitle>{stringCut(title, 18)}</CardTitle>
+        <CardTitle className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
+          {title}
+        </CardTitle>
         <CardDescription>{createdAt.toLocaleDateString()}</CardDescription>
       </CardHeader>
       <CardContent className="text-zinc-500">{description}</CardContent>
