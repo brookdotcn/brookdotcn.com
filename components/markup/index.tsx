@@ -1,7 +1,13 @@
+"use client";
+
+import { useTheme } from "next-themes";
 import { type FC, type JSX } from "react";
 import Markdown from "react-markdown";
 import { Prism } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  oneDark as darkTheme,
+  oneLight as lightTheme,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
 
 type MarkupProps = {
@@ -9,6 +15,8 @@ type MarkupProps = {
 };
 
 const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
+  const { resolvedTheme } = useTheme();
+
   return (
     <div id="markdown">
       <Markdown
@@ -32,13 +40,13 @@ const Markup: FC<MarkupProps> = ({ rawMarkdown }): JSX.Element => {
 
             return (
               <div>
-                <div className="w-full text-center text-zinc-500">
+                <div className="w-full text-center text-zinc-400 dark:text-zinc-500">
                   {fileName}
                 </div>
                 <Prism
                   showLineNumbers
                   language={languageIdentifier}
-                  style={oneDark}
+                  style={resolvedTheme === "dark" ? darkTheme : lightTheme}
                 >
                   {children.toString().replace(/\n$/, "")}
                 </Prism>

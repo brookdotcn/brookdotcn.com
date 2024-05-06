@@ -44,10 +44,10 @@
     }
 
     pre {
-      @apply rounded !bg-zinc-900;
+      @apply rounded !bg-zinc-100 dark:!bg-zinc-900;
 
       span {
-        @apply !bg-zinc-900;
+        @apply !bg-zinc-100 dark:!bg-zinc-900;
       }
     }
 
