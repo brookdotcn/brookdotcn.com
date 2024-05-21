@@ -3,19 +3,15 @@
 import { LoaderCircle } from "lucide-react";
 import Link from "next/link";
 import { type FC, type JSX, useState } from "react";
-import { Button } from "../ui/button";
-import { formatBlogTitleForUrl } from "@/utils";
+import { Button } from "../button";
 
-const BlogCardAction: FC<{ title: string }> = ({ title }): JSX.Element => {
+const BlogCardAction: FC<{ slug: string }> = ({ slug }): JSX.Element => {
   const [redirectLoading, setRedirectLoading] = useState<boolean>(false);
 
   return (
     <>
       {!redirectLoading && (
-        <Link
-          href={`/blog/${formatBlogTitleForUrl(title)}`}
-          onClick={() => setRedirectLoading(true)}
-        >
+        <Link href={`/blog/${slug}`} onClick={() => setRedirectLoading(true)}>
           <Button>Read More</Button>
         </Link>
       )}

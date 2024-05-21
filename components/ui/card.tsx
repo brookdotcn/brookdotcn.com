@@ -1,7 +1,6 @@
 import { type HTMLAttributes, forwardRef, type FC } from "react";
-import BlogCardAction from "../card-action";
-import { Badge } from "./badge";
-import { type BlogWithTags } from "@/types";
+import BlogCardAction from "./card-action";
+import { type BlogMetadata } from "@/types";
 import { cn } from "@/utils";
 
 const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
@@ -74,40 +73,25 @@ const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 );
 CardFooter.displayName = "CardFooter";
 
-type BlogCardProps = Omit<BlogWithTags, "id" | "content" | "updatedAt">;
-
-const BlogCard: FC<BlogCardProps> = ({
+const BlogCard: FC<Omit<BlogMetadata, "tags">> = ({
   createdAt,
   description,
-  tags,
+  slug,
   title,
 }): JSX.Element => {
   return (
-    <Card className="flex min-w-[315px] max-w-[315px] flex-col justify-between">
+    <Card className="flex h-64 min-w-[315px] max-w-[315px] flex-col justify-between">
       <CardHeader>
         <CardTitle className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
           {title}
         </CardTitle>
-        <CardDescription>{createdAt.toLocaleDateString()}</CardDescription>
+        <CardDescription>
+          {createdAt.toLocaleDateString(undefined, { dateStyle: "medium" })}
+        </CardDescription>
       </CardHeader>
       <CardContent className="text-zinc-500">{description}</CardContent>
-      <CardFooter className="flex justify-between">
-        <div className="flex w-1/2 gap-2 overflow-x-auto">
-          {tags.map((tag) => (
-            <Badge
-              key={tag.id}
-              className="text-zinc-950 dark:text-white"
-              style={{
-                backgroundColor: tag.colour,
-                border: `2px solid ${tag.colour}`,
-              }}
-            >
-              {tag.name}
-            </Badge>
-          ))}
-        </div>
-
-        <BlogCardAction title={title} />
+      <CardFooter className="flex justify-end">
+        <BlogCardAction slug={slug} />
       </CardFooter>
     </Card>
   );

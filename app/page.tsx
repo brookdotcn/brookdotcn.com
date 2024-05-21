@@ -1,37 +1,10 @@
 import { type NextPage } from "next";
 import { type JSX } from "react";
+import { readAllBlogsMetadata } from "@/actions";
 import BlogCard from "@/components/ui/card";
-import prisma from "@/lib";
 
 const IndexPage: NextPage = async (): Promise<JSX.Element> => {
-  const recentBlogs = await prisma.blog.findMany({
-    include: { tags: true },
-    orderBy: { createdAt: "desc" },
-  });
-
-  const reactBlogs = await prisma.blog.findMany({
-    include: { tags: true },
-    orderBy: { createdAt: "desc" },
-    where: {
-      tags: {
-        some: {
-          name: "react",
-        },
-      },
-    },
-  });
-
-  const guideBlogs = await prisma.blog.findMany({
-    include: { tags: true },
-    orderBy: { createdAt: "desc" },
-    where: {
-      tags: {
-        some: {
-          name: "guide",
-        },
-      },
-    },
-  });
+  const allBlogs = await readAllBlogsMetadata();
 
   return (
     <section className="page-container">
@@ -41,66 +14,23 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
         <p className="page-block-subtitle">
           Be up to date on my ten latest blogs, left most recent.
         </p>
-
-        <div className="page-block-scrollable">
-          {recentBlogs.map((blog) => {
-            return (
-              <BlogCard
-                key={blog.id}
-                title={blog.title}
-                createdAt={blog.createdAt}
-                description={blog.description}
-                tags={blog.tags}
-              />
-            );
-          })}
-        </div>
       </div>
 
-      <div className="page-block">
-        <h1 className="page-block-title">React</h1>
-
-        <p className="page-block-subtitle">
-          Blogs containing information on React, one of the most popular tools
-          in web development.
-        </p>
-
-        <div className="page-block-scrollable">
-          {reactBlogs.map((blog) => {
+      <div className="page-scrollable">
+        {allBlogs
+          .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+          .map((blog, idx) => {
             return (
               <BlogCard
-                key={blog.id}
-                title={blog.title}
+                key={idx}
                 createdAt={blog.createdAt}
+                dirName={blog.dirName}
+                slug={blog.slug}
+                title={blog.title}
                 description={blog.description}
-                tags={blog.tags}
               />
             );
           })}
-        </div>
-      </div>
-
-      <div className="page-block">
-        <h1 className="page-block-title">Guide</h1>
-
-        <p className="page-block-subtitle">
-          Instructional blogs to learn new things, based on whatever I find to
-          be interesting.
-        </p>
-
-        <div className="page-block-scrollable">
-          {guideBlogs.map((blog) => {
-            return (
-              <BlogCard
-                key={blog.id}
-                title={blog.title}
-                createdAt={blog.createdAt}
-                description={blog.description}
-                tags={blog.tags}
-              />
-            );
-          })}
-        </div>
       </div>
     </section>
   );

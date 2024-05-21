@@ -1,3 +1,8 @@
-import { type Blog, type Tag } from "@prisma/client";
-
-export type BlogWithTags = Blog & { tags: Tag[] };
+export type BlogMetadata = {
+  createdAt: Date;
+  description: string;
+  dirName: string;
+  slug: string;
+  tags: string[];
+  title: string;
+};

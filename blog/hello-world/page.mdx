@@ -1,0 +1,38 @@
+import CodeBlock from "@/components/ui/code-block/index.tsx";
+
+export const meta = {
+  createdAt: new Date("05/20/24"),
+  dirName: "hello-world",
+  slug: "hello-world",
+  tags: ["Tag One", "Tag Two"],
+  title: "Hello, World",
+  description: "Hey, world! This site is undergoing changes.",
+};
+
+Hello, I'm currently in the process of changing the backend of this site toward a 'local first' attitude
+where the blogs are stored within the file system of the deployed environment instead of within a database
+elsewhere. This is purely to cut unneeded boilerplate code and network requests as, let's be
+honest, it's overkill for a simple hobby blog but for further information I'll re-write
+a 'first' blog explaining why and how I migrated this over at a later date.
+
+<br />
+<CodeBlock>
+  ```tsx-example.tsx
+const main = (): void => {
+    console.log("Hello, world!");
+};
+```
+</CodeBlock>
+<br />
+
+<br />
+<CodeBlock>
+  ```rust-example.rs
+fn main() -> () {
+    println!("Hello, world!");
+};
+```
+</CodeBlock>
+<br />
+
+Brook. 🚀

@@ -1,28 +1,22 @@
 import { type NextPage, type Metadata } from "next";
 import { redirect } from "next/navigation";
 import { type ReactNode, type JSX } from "react";
-import prisma from "@/lib";
-import { parseBlogTitleFromUrl } from "@/utils";
+import { findBlogByMetadataSlug } from "@/actions";
 
 type Props = {
   readonly children: ReactNode;
-  params: { blogTitle: string };
+  params: { blogSlug: string };
 };
 
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
-  const blogByTitle = await prisma.blog.findFirst({
-    where: {
-      title: parseBlogTitleFromUrl(params.blogTitle),
-    },
-  });
-
-  if (!blogByTitle) return redirect("/");
+  const blogMetadata = await findBlogByMetadataSlug(params.blogSlug);
+  if (!blogMetadata) redirect("/");
 
   return {
-    description: blogByTitle.content,
-    title: `${blogByTitle.title} | brookdotcn`,
+    description: blogMetadata.description,
+    title: `${blogMetadata.title} | brookdotcn`,
   };
 };
 

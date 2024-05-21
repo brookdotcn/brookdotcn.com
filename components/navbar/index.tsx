@@ -34,7 +34,7 @@ const Navbar: FC = (): JSX.Element => {
 
           <Link
             className="text-black dark:text-white"
-            href="https://twitter.com/brookdotcn"
+            href="https://x.com/brookdotcn"
             title="See My Twitter"
             target="_blank"
           >
