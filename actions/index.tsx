@@ -6,11 +6,11 @@ export const readBlogDirectories = async (): Promise<string[]> => {
   return await fs.readdir(path.join(process.cwd() + "/blog"));
 };
 
-export const findBlogByMetadataSlug = async (
+export const findBlogMetadataBySlug = async (
   slug: string,
 ): Promise<BlogMetadata | undefined> => {
   const allBlogsMetadata = await readAllBlogsMetadata();
-  return allBlogsMetadata.find((blog) => blog.slug == slug);
+  return allBlogsMetadata.find((blog) => blog.slug === slug);
 };
 
 export const readAllBlogsMetadata = async (): Promise<BlogMetadata[]> => {

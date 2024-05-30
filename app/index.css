@@ -45,6 +45,10 @@
       @apply list-disc;
     }
 
+    blockquote {
+      @apply border-l-2 pl-2 text-zinc-500 dark:text-zinc-400;
+    }
+
     pre {
       @apply !m-0 rounded !bg-zinc-100 dark:!bg-zinc-900;
 

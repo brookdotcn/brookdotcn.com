@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
 import { redirect } from "next/navigation";
 import { type JSX } from "react";
-import { findBlogByMetadataSlug, readAllBlogsMetadata } from "@/actions";
-import findBlogBySlug from "@/actions/import-map";
+import { findBlogMetadataBySlug, readAllBlogsMetadata } from "@/actions";
+import findBlogContentBySlug from "@/actions/import-map";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
@@ -19,12 +19,10 @@ type Props = {
 };
 
 const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
-  if (!params.blogSlug) redirect("/");
+  const blogMetadata = await findBlogMetadataBySlug(params.blogSlug);
+  if (!blogMetadata || !params.blogSlug) redirect("/");
 
-  const blogMetadata = await findBlogByMetadataSlug(params.blogSlug);
-  if (!blogMetadata) redirect("/");
-
-  const Blog = findBlogBySlug(params.blogSlug) || redirect("/");
+  const Blog = findBlogContentBySlug(params.blogSlug) || redirect("/");
 
   return (
     <div className="page-container">
@@ -35,7 +33,7 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
           })}
         </p>
       </div>
-      
+
       <h1 className="page-block-title w-full text-center sm:text-6xl">
         {blogMetadata.title}
       </h1>

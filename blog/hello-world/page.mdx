@@ -1,38 +1,238 @@
 import CodeBlock from "@/components/ui/code-block/index.tsx";
+import Counter from "./code/counter.tsx";
 
 export const meta = {
   createdAt: new Date("05/20/24"),
   dirName: "hello-world",
   slug: "hello-world",
-  tags: ["Tag One", "Tag Two"],
-  title: "Hello, World",
-  description: "Hey, world! This site is undergoing changes.",
+  tags: ["next.js", "refactor", "blog", "open-source"],
+  title: "Hello, World!",
+  description: "How I refactored this blog to prioritise local data & remove all network requests.",
 };
 
-Hello, I'm currently in the process of changing the backend of this site toward a 'local first' attitude
-where the blogs are stored within the file system of the deployed environment instead of within a database
-elsewhere. This is purely to cut unneeded boilerplate code and network requests as, let's be
-honest, it's overkill for a simple hobby blog but for further information I'll re-write
-a 'first' blog explaining why and how I migrated this over at a later date.
+Hello! It's very likely you haven't been here before but this site has been my personal blog since early February 2024
+where I've just spilled my thoughts or shared some 'cool' code snippets but more so than anything else it's a pet project
+on the side that has a very low technical draw but enough room to do some cool things every now and again. Originally, this
+blog was built with [`next.js`](https://nextjs.org) along with a 'CMS' also built with `next.js` that allowed for
+markdown editing and publishing to a [Planetscale](https://planetscale.com) database that was later migrated to 
+[Supabase](https://supabase.com) as Planetscale removed their free tier, meaning this site itself only handled reading the
+blog data from the database but even that felt unnecessary so I decided to start storing these blogs locally within the
+environment file system and I thought I'd share how I did it as I definitely learned a thing or two.
 
 <br />
+
+> **Note:** if you want to read further on the Planetscale free tier removal, see [here](https://planetscale.com/blog/planetscale-forever).
+
+<br />
+
+## Content
+
+<br />
+
+The core of the site's markdown rendering hasn't changed all that much, it's still utilising the well-known library called
+[react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) for highlighting code blocks although the
+markdown being transformed into markup has changed; now no longer needing the [react-markdown](https://github.com/remarkjs/react-markdown)
+library as this functionality is covered by [mdx](https://github.com/mdx-js/mdx) (and more accurately, [next-mdx](https://www.npmjs.com/package/@next/mdx))
+allowing me to write `.mdx` files that can contain `jsx` components which will act just as they would within `.tsx` or `.jsx` files. Pure
+`javascript` objects can also be exported to be accessed when importing the markdown file through the dot notation like you normally would
+which is handy for having a 'meta' object describing each file, which is what I've done for my markdown files. Here's an example:
+
+
+<br />
+
 <CodeBlock>
-  ```tsx-example.tsx
-const main = (): void => {
-    console.log("Hello, world!");
+```tsx-page.mdx
+export const meta = {
+  createdAt: new Date("05/20/24"),
+  dirName: "hello-world",
+  slug: "hello-world",
+  tags: ["next.js", "refactor", "blog", "open-source"],
+  title: "Hello, World!",
+  description: "How I refactored this blog to prioritise local data & remove all network requests.",
 };
 ```
 </CodeBlock>
-<br />
 
 <br />
+
+> **Note:** one thing I've learned is that there is no `typescript` compilation here, so you cannot attach any types within these files.
+
+<br />
+
 <CodeBlock>
-  ```rust-example.rs
-fn main() -> () {
-    println!("Hello, world!");
+```tsx-page.tsx
+import HelloWorld from "@/blog/hello-world/page.mdx";
+
+const { meta } = HelloWorld;
+```
+</CodeBlock>
+
+<br />
+
+It's far easier using `mdx` and writing these pure markdown files in-editor as I don't have to re-invent the wheel of markdown parsing within
+my 'CMS' on the backend. The original reason for me trying to avoid pure markdown was the case of needing a bit more interactivity & control
+over what my content is, using the react components I can call into these files opens up a lot for me in showcasing random ideas, like the
+infamous counter component.
+
+<br />
+
+<Counter />
+
+<br />
+
+## File System
+
+<br />
+
+So now we know how I'm writing the markdown locally, the focus comes to how I plan on reading & importing these markdown files as well as the
+metadata embedded within it. Entirely client-side rendering and just delivering the markdown files to the client to be imported would be simple,
+but I don't like simple (apparently) so I wanted to utilise the offerings of `next.js` using `generateStaticParams` and server components. This
+proved to be difficult as there were some issues involving a changing path, missing files in the built output and a general misunderstanding of how
+`next.js` handles the environment's file system... oh and all of this only occurred in production and worked completely fine locally!
+
+<br />
+
+A common issue was locally, you were able to just use relative, absolute or even the custom `typescript` compiler path short-hand e.g. `@/foo`
+but server-side using the `node:fs` API would not work and the folder structure was entirely different as well as the root now being some
+`var/task/...` altered path so to counter this, the `process.cwd()` and `path.join()` methods were essential for `next.js` to understand you
+wanted to read from the same root as you would locally e.g. `@/foo` could be `path.join(process.cwd() + '/foo')` and that would work just fine.
+
+<br />
+
+Let's get into how I'm currently reading the file system with a server-side focus. Firstly, the folder structure for these markdown files is as
+follows `blog/(blog_name)/page.mdx` and the plan was always to just iterate over these folders and read these pages.
+
+<br />
+
+<CodeBlock>
+```tsx-utils.tsx
+export const readBlogDirectories = async (): Promise<string[]> => {
+  return await fs.readdir(path.join(process.cwd() + "/blog"));
 };
 ```
 </CodeBlock>
+
+<br />
+
+<CodeBlock>
+```tsx-utils.tsx
+export const readAllBlogsMetadata = async (): Promise<BlogMetadata[]> => {
+  const dirs = await readBlogDirectories();
+  const blogFiles = await Promise.all(
+    dirs.map(async (dir) => import(`/blog/${dir}/page.mdx`)),
+  );
+
+  return blogFiles.map((blog) => ({
+    ...blog.meta,
+  }));
+};
+```
+</CodeBlock>
+
+<br />
+
+With this, I can read in all of these directory names and import the markdown files to access all the metadata objects I export from each to
+populate the card information. There still comes the issue of reading the metadata of a single file but that can also just use this function
+to iterate over the array of metadata objects to find by a certain property.
+
+<br />
+
+<CodeBlock>
+```tsx-page.tsx
+const IndexPage: NextPage = async (): Promise<JSX.Element> => {
+  const allBlogs = await readAllBlogsMetadata();
+
+  return (
+    {/* ... */}
+  );
+};
+```
+</CodeBlock>
+
+<br />
+
+> **Note:** having to read in all of the directories again is sub-optimal but for now with such a little amount of blogs it's negligible.
+
+<br />
+
+<CodeBlock>
+```tsx-page.tsx
+const findBlogMetadataBySlug = async (slug: string): Promise<BlogMetadata | undefined> => {
+  const allBlogsMetadata = await readAllBlogsMetadata();
+  return allBlogsMetadata.find((blog) => blog.slug === slug);
+};
+```
+</CodeBlock>
+
+<br />
+
+The metadata of these blogs is now covered but what about the actual markdown content? Encountering some issues with the way certain files
+will be excluded from the build output if they're not included within the import tree (makes sense, not complaining) and not having any luck
+with the [`next.js` configuration options regarding including directories](https://nextjs.org/docs/app/api-reference/next-config-js/output) docs
+led me to (for now) just creating a mapper that takes in the slug from the url, generated from the metadata, and returns the according `mdx`
+component.
+
+<br />
+
+> **Docs:** [During `next build`, `Next.js` will use @vercel/nft to statically analyze `import`, `require`, and `fs` usage to determine all files
+> that a page might load.](https://nextjs.org/docs/app/api-reference/next-config-js/output#how-it-works)
+
+<br />
+
+<CodeBlock>
+```tsx-page.tsx
+import HelloWorld from "@/blog/hello-world/page.mdx";
+
+type MarkdownPage = (props: {
+  readonly components?: {} | undefined;
+}) => JSX.Element;
+
+const findBlogContentBySlug = (slug: string): MarkdownPage | undefined => {
+  const slugToMarkdownContent: Record<string, MarkdownPage> = {
+    "hello-world": HelloWorld,
+  };
+
+  return slugToMarkdownContent[slug];
+};
+```
+</CodeBlock>
+
+<br />
+
+<CodeBlock>
+```tsx-page.tsx
+const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
+  const Blog = findBlogContentBySlug(params.blogSlug) || redirect("/");
+
+  return (
+    {/* ... */}
+  );
+};
+```
+</CodeBlock>
+
+<br />
+
+## Conclusion
+
+<br />
+
+This was a long time coming, the maintenance of keeping the live site and the 'CMS' up-to-date was stopping me from making even small
+incremental changes or quick fixes. If I was trying to make the next large scale blogging platform... maybe having one would be appropriate,
+but not for a small hobby blog site where I mainly use it to force what I learn to stick in my brain by writing it to digital paper. 
+
+<br />
+
+Learning the details of how `next.js` handles the file system was a challenge I'm glad I faced because based on similar issues reported
+on the common sites, it's a well-known pain point with some even completely dismissing the idea of keeping the blogs locally with `next.js`
+and instead resorting to dropping the framework or sticking to good ol' fashioned database storage. If any of you are here, you may steal some
+of my wacky code [here](https://github.com/brookdotcn/brookdotcn.com) and use it for yourself.
+
+<br />
+
+Thank you for reading, I hope this was somewhat interesting but writing is not my game so if it was... read literature and your life will
+change I promise.
+
 <br />
 
 Brook. 🚀

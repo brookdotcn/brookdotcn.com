@@ -1,7 +1,7 @@
 import { type NextPage, type Metadata } from "next";
 import { redirect } from "next/navigation";
 import { type ReactNode, type JSX } from "react";
-import { findBlogByMetadataSlug } from "@/actions";
+import { findBlogMetadataBySlug } from "@/actions";
 
 type Props = {
   readonly children: ReactNode;
@@ -11,7 +11,7 @@ type Props = {
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
-  const blogMetadata = await findBlogByMetadataSlug(params.blogSlug);
+  const blogMetadata = await findBlogMetadataBySlug(params.blogSlug);
   if (!blogMetadata) redirect("/");
 
   return {

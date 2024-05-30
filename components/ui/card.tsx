@@ -80,7 +80,7 @@ const BlogCard: FC<Omit<BlogMetadata, "tags">> = ({
   title,
 }): JSX.Element => {
   return (
-    <Card className="flex h-64 min-w-[315px] max-w-[315px] flex-col justify-between">
+    <Card className="flex h-72 min-w-[315px] max-w-[315px] flex-col justify-between">
       <CardHeader>
         <CardTitle className="inline-block overflow-hidden text-ellipsis whitespace-nowrap">
           {title}
