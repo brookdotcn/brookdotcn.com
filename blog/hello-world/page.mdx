@@ -13,7 +13,7 @@ export const meta = {
 Hello! It's very likely you haven't been here before but this site has been my personal blog since early February 2024
 where I've just spilled my thoughts or shared some 'cool' code snippets but more so than anything else it's a pet project
 on the side that has a very low technical draw but enough room to do some cool things every now and again. Originally, this
-blog was built with [`next.js`](https://nextjs.org) along with a 'CMS' also built with `next.js` that allowed for
+blog was built with [next.js](https://nextjs.org) along with a 'CMS' also built with `next.js` that allowed for
 markdown editing and publishing to a [Planetscale](https://planetscale.com) database that was later migrated to 
 [Supabase](https://supabase.com) as Planetscale removed their free tier, meaning this site itself only handled reading the
 blog data from the database but even that felt unnecessary so I decided to start storing these blogs locally within the
@@ -41,7 +41,7 @@ which is handy for having a 'meta' object describing each file, which is what I'
 <br />
 
 <CodeBlock>
-```tsx-page.mdx
+```tsx-example.mdx
 export const meta = {
   createdAt: new Date("05/20/24"),
   dirName: "hello-world",
@@ -60,7 +60,7 @@ export const meta = {
 <br />
 
 <CodeBlock>
-```tsx-page.tsx
+```tsx-example.tsx
 import HelloWorld from "@/blog/hello-world/page.mdx";
 
 const { meta } = HelloWorld;
@@ -156,8 +156,8 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
 <br />
 
 <CodeBlock>
-```tsx-page.tsx
-const findBlogMetadataBySlug = async (slug: string): Promise<BlogMetadata | undefined> => {
+```tsx-utils.tsx
+export const findBlogMetadataBySlug = async (slug: string): Promise<BlogMetadata | undefined> => {
   const allBlogsMetadata = await readAllBlogsMetadata();
   return allBlogsMetadata.find((blog) => blog.slug === slug);
 };
@@ -180,14 +180,14 @@ component.
 <br />
 
 <CodeBlock>
-```tsx-page.tsx
+```tsx-utils.tsx
 import HelloWorld from "@/blog/hello-world/page.mdx";
 
 type MarkdownPage = (props: {
   readonly components?: {} | undefined;
 }) => JSX.Element;
 
-const findBlogContentBySlug = (slug: string): MarkdownPage | undefined => {
+export const findBlogContentBySlug = (slug: string): MarkdownPage | undefined => {
   const slugToMarkdownContent: Record<string, MarkdownPage> = {
     "hello-world": HelloWorld,
   };

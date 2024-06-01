@@ -1,7 +1,7 @@
 import { type NextPage, type Metadata } from "next";
 import { redirect } from "next/navigation";
 import { type ReactNode, type JSX } from "react";
-import { findBlogMetadataBySlug } from "@/actions";
+import { findBlogMetadataBySlug } from "@/utils/blog";
 
 type Props = {
   readonly children: ReactNode;

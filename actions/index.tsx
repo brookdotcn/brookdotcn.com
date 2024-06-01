@@ -1,25 +1,25 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
-import { type BlogMetadata } from "@/types";
+"use server";
 
-export const readBlogDirectories = async (): Promise<string[]> => {
-  return await fs.readdir(path.join(process.cwd() + "/blog"));
+import { type JSX } from "react";
+import HelloWorld from "@/blog/hello-world/page.mdx";
+
+// type created simply to be more explicit with the return context
+// and the content was extracted from the intellisense within the
+// 'mdx' import, like so:
+//
+// (alias) function HelloWorld(props: {
+//    readonly components?: {} | undefined;
+// }): JSX.Element
+type MarkdownPage = (props: {
+  readonly components?: {} | undefined;
+}) => JSX.Element;
+
+const findBlogContentBySlug = (slug: string): MarkdownPage | undefined => {
+  const slugToMarkdownContent: Record<string, MarkdownPage> = {
+    "hello-world": HelloWorld,
+  };
+
+  return slugToMarkdownContent[slug];
 };
 
-export const findBlogMetadataBySlug = async (
-  slug: string,
-): Promise<BlogMetadata | undefined> => {
-  const allBlogsMetadata = await readAllBlogsMetadata();
-  return allBlogsMetadata.find((blog) => blog.slug === slug);
-};
-
-export const readAllBlogsMetadata = async (): Promise<BlogMetadata[]> => {
-  const dirs = await readBlogDirectories();
-  const blogFiles = await Promise.all(
-    dirs.map(async (dir) => import(`/blog/${dir}/page.mdx`)),
-  );
-
-  return blogFiles.map((blog) => ({
-    ...blog.meta,
-  }));
-};
+export default findBlogContentBySlug;

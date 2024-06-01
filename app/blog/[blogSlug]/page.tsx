@@ -1,10 +1,10 @@
 import { type NextPage } from "next";
 import { redirect } from "next/navigation";
 import { type JSX } from "react";
-import { findBlogMetadataBySlug, readAllBlogsMetadata } from "@/actions";
-import findBlogContentBySlug from "@/actions/import-map";
+import findBlogContentBySlug from "@/actions";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { findBlogMetadataBySlug, readAllBlogsMetadata } from "@/utils/blog";
 
 export const generateStaticParams = async () => {
   const allBlogs = await readAllBlogsMetadata();

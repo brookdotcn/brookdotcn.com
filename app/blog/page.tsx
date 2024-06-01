@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import { type JSX } from "react";
-import { readAllBlogsMetadata } from "@/actions";
 import BlogCard from "@/components/ui/card";
+import { readAllBlogsMetadata } from "@/utils/blog";
 
 const BlogsPage: NextPage = async (): Promise<JSX.Element> => {
   const allBlogs = await readAllBlogsMetadata();
