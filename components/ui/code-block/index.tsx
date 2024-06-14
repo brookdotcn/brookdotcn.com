@@ -17,22 +17,26 @@ const CodeBlock: FC<{ children: any }> = ({ children }): JSX.Element => {
   const [language, fileName] = className.split("-").slice(1);
 
   return (
-    <div className="rounded-lg border border-zinc-300 dark:border-zinc-800">
-      <span className="flex h-8 w-full items-center justify-between px-2">
-        <p className="flex h-5 items-center rounded border border-zinc-300 bg-zinc-100 px-2 text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900">
-          {fileName}
-        </p>
-        <button onClick={() => navigator.clipboard.writeText(code)}>
-          <Clipboard className="text-zinc-500" size={18} />
-        </button>
-      </span>
-      <Prism
-        language={language}
-        style={resolvedTheme === "dark" ? darkTheme : lightTheme}
-      >
-        {code}
-      </Prism>
-    </div>
+    <>
+      <br />
+      <div className="rounded-lg border border-zinc-300 dark:border-zinc-800">
+        <span className="flex h-8 w-full items-center justify-between px-2">
+          <p className="flex h-5 items-center rounded border border-zinc-300 bg-zinc-100 px-2 text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900">
+            {fileName}
+          </p>
+          <button onClick={() => navigator.clipboard.writeText(code)}>
+            <Clipboard className="text-zinc-500" size={18} />
+          </button>
+        </span>
+        <Prism
+          language={language}
+          style={resolvedTheme === "dark" ? darkTheme : lightTheme}
+        >
+          {code}
+        </Prism>
+      </div>
+      <br />
+    </>
   );
 };
 

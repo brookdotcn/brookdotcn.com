@@ -37,9 +37,6 @@ allowing me to write `.mdx` files that can contain `jsx` components which will a
 `javascript` objects can also be exported to be accessed when importing the markdown file through the dot notation like you normally would
 which is handy for having a 'meta' object describing each file, which is what I've done for my markdown files. Here's an example:
 
-
-<br />
-
 <CodeBlock>
 ```tsx-example.mdx
 export const meta = {
@@ -53,11 +50,7 @@ export const meta = {
 ```
 </CodeBlock>
 
-<br />
-
 > **Note:** one thing I've learned is that there is no `typescript` compilation here, so you cannot attach any types within these files.
-
-<br />
 
 <CodeBlock>
 ```tsx-example.tsx
@@ -66,8 +59,6 @@ import HelloWorld from "@/blog/hello-world/page.mdx";
 const { meta } = HelloWorld;
 ```
 </CodeBlock>
-
-<br />
 
 It's far easier using `mdx` and writing these pure markdown files in-editor as I don't have to re-invent the wheel of markdown parsing within
 my 'CMS' on the backend. The original reason for me trying to avoid pure markdown was the case of needing a bit more interactivity & control
@@ -102,8 +93,6 @@ wanted to read from the same root as you would locally e.g. `@/foo` could be `pa
 Let's get into how I'm currently reading the file system with a server-side focus. Firstly, the folder structure for these markdown files is as
 follows `blog/(blog_name)/page.mdx` and the plan was always to just iterate over these folders and read these pages.
 
-<br />
-
 <CodeBlock>
 ```tsx-utils.tsx
 export const readBlogDirectories = async (): Promise<string[]> => {
@@ -111,8 +100,6 @@ export const readBlogDirectories = async (): Promise<string[]> => {
 };
 ```
 </CodeBlock>
-
-<br />
 
 <CodeBlock>
 ```tsx-utils.tsx
@@ -129,13 +116,9 @@ export const readAllBlogsMetadata = async (): Promise<BlogMetadata[]> => {
 ```
 </CodeBlock>
 
-<br />
-
 With this, I can read in all of these directory names and import the markdown files to access all the metadata objects I export from each to
 populate the card information. There still comes the issue of reading the metadata of a single file but that can also just use this function
 to iterate over the array of metadata objects to find by a certain property.
-
-<br />
 
 <CodeBlock>
 ```tsx-page.tsx
@@ -149,11 +132,7 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
 ```
 </CodeBlock>
 
-<br />
-
 > **Note:** having to read in all of the directories again is sub-optimal but for now with such a little amount of blogs it's negligible.
-
-<br />
 
 <CodeBlock>
 ```tsx-utils.tsx
@@ -163,8 +142,6 @@ export const findBlogMetadataBySlug = async (slug: string): Promise<BlogMetadata
 };
 ```
 </CodeBlock>
-
-<br />
 
 The metadata of these blogs is now covered but what about the actual markdown content? Encountering some issues with the way certain files
 will be excluded from the build output if they're not included within the import tree (makes sense, not complaining) and not having any luck
@@ -176,8 +153,6 @@ component.
 
 > **Docs:** [During `next build`, `Next.js` will use @vercel/nft to statically analyze `import`, `require`, and `fs` usage to determine all files
 > that a page might load.](https://nextjs.org/docs/app/api-reference/next-config-js/output#how-it-works)
-
-<br />
 
 <CodeBlock>
 ```tsx-utils.tsx
@@ -197,8 +172,6 @@ export const findBlogContentBySlug = (slug: string): MarkdownPage | undefined =>
 ```
 </CodeBlock>
 
-<br />
-
 <CodeBlock>
 ```tsx-page.tsx
 const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
@@ -210,8 +183,6 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
 };
 ```
 </CodeBlock>
-
-<br />
 
 ## Conclusion
 

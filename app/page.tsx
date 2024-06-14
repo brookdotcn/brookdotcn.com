@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import { type JSX } from "react";
 import BlogCard from "@/components/ui/card";
+import Search from "@/components/ui/search";
 import { readAllBlogsMetadata } from "@/utils/blog";
 
 const IndexPage: NextPage = async (): Promise<JSX.Element> => {
@@ -15,6 +16,8 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
           Be up to date on my ten latest blogs, left most recent.
         </p>
       </div>
+
+      <Search items={allBlogs} />
 
       <div className="page-scrollable">
         {allBlogs
