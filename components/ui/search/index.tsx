@@ -46,7 +46,7 @@ const Search: FC<Props> = ({ items }): JSX.Element => {
               {items.map((blog) => (
                 <Link key={blog.slug} href={`/${blog.slug}`}>
                   <CommandItem
-                    value={blog.title}
+                    value={blog.tags.join(" ")}
                     onSelect={(currentValue) => {
                       setValue(currentValue);
                       setOpen(false);

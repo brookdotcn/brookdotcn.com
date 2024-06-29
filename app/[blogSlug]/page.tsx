@@ -1,4 +1,6 @@
+import { Home } from "lucide-react";
 import { type NextPage } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { type JSX } from "react";
 import findBlogContentBySlug from "@/actions";
@@ -26,11 +28,16 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
 
   return (
     <div className="flex flex-col gap-8 py-12">
-      <p>
-        {blogMetadata.createdAt.toLocaleDateString(undefined, {
-          dateStyle: "full",
-        })}
-      </p>
+      <div className="flex items-center justify-between">
+        <p>
+          {blogMetadata.createdAt.toLocaleDateString(undefined, {
+            dateStyle: "full",
+          })}
+        </p>
+        <Link href="/">
+          <Home />
+        </Link>
+      </div>
 
       <h1 className="w-full text-center text-4xl font-bold sm:text-6xl">
         {blogMetadata.title}
