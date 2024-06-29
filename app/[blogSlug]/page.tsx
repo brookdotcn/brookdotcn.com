@@ -27,7 +27,7 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
   const Blog = findBlogContentBySlug(params.blogSlug) || redirect("/");
 
   return (
-    <div className="flex flex-col gap-8 py-12">
+    <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
         <p>
           {blogMetadata.createdAt.toLocaleDateString(undefined, {

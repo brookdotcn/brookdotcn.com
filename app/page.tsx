@@ -52,21 +52,22 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
 
       <section className="flex flex-col gap-4">
         <Search items={allBlogs} />
-
-        {allBlogs
-          .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-          .map((blog, idx) => {
-            return (
-              <BlogCard
-                key={idx}
-                createdAt={blog.createdAt}
-                dirName={blog.dirName}
-                slug={blog.slug}
-                title={blog.title}
-                description={blog.description}
-              />
-            );
-          })}
+        <div className="flex flex-wrap">
+          {allBlogs
+            .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+            .map((blog, idx) => {
+              return (
+                <BlogCard
+                  key={idx}
+                  createdAt={blog.createdAt}
+                  dirName={blog.dirName}
+                  slug={blog.slug}
+                  title={blog.title}
+                  description={blog.description}
+                />
+              );
+            })}
+        </div>
       </section>
     </div>
   );
