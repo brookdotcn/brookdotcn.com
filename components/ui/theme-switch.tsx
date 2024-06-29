@@ -8,7 +8,7 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "./dropdown-menu";
 
 const ThemeSwitch: FC = (): JSX.Element => {
   const { setTheme, theme } = useTheme();

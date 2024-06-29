@@ -1,25 +1,58 @@
+import { Github, Twitter } from "lucide-react";
 import { type NextPage } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { type JSX } from "react";
 import BlogCard from "@/components/ui/card";
 import Search from "@/components/ui/search";
+import { Separator } from "@/components/ui/separator";
+import ThemeSwitch from "@/components/ui/theme-switch";
 import { readAllBlogsMetadata } from "@/utils/blog";
 
 const IndexPage: NextPage = async (): Promise<JSX.Element> => {
   const allBlogs = await readAllBlogsMetadata();
 
   return (
-    <section className="page-container">
-      <div className="page-block">
-        <h1 className="page-block-title">Recent</h1>
+    <div className="flex flex-col gap-8">
+      <section className="flex h-24 items-center gap-4">
+        <Image
+          className="rounded"
+          src="/brook.jpeg"
+          alt="An image of me at a younger age"
+          height="75"
+          width="75"
+        />
+      </section>
 
-        <p className="page-block-subtitle">
-          Be up to date on my ten latest blogs, left most recent.
-        </p>
-      </div>
+      <section className="flex h-8 items-center gap-4">
+        <ThemeSwitch />
 
-      <Search items={allBlogs} />
+        <Separator orientation="vertical" />
 
-      <div className="page-scrollable">
+        <Link
+          className="text-black dark:text-white"
+          href="https://x.com/brookdotcn"
+          title="See My Twitter"
+          target="_blank"
+        >
+          <Twitter className="hover:text-zinc-400" />
+        </Link>
+
+        <Separator orientation="vertical" />
+
+        <Link
+          className="text-black dark:text-white"
+          href="https://github.com/brookdotcn"
+          title="See My GitHub"
+          target="_blank"
+        >
+          <Github className="hover:text-zinc-400" />
+        </Link>
+      </section>
+
+      <section className="flex flex-col gap-4">
+        <Search items={allBlogs} />
+
         {allBlogs
           .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
           .map((blog, idx) => {
@@ -34,8 +67,8 @@ const IndexPage: NextPage = async (): Promise<JSX.Element> => {
               />
             );
           })}
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

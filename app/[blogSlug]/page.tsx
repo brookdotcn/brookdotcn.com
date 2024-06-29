@@ -25,16 +25,14 @@ const BlogPage: NextPage<Props> = async ({ params }): Promise<JSX.Element> => {
   const Blog = findBlogContentBySlug(params.blogSlug) || redirect("/");
 
   return (
-    <div className="page-container">
-      <div className="flex w-full flex-wrap justify-between gap-2 sm:gap-0">
-        <p className="page-block-subtitle">
-          {blogMetadata.createdAt.toLocaleDateString(undefined, {
-            dateStyle: "full",
-          })}
-        </p>
-      </div>
+    <div className="flex flex-col gap-8 py-12">
+      <p>
+        {blogMetadata.createdAt.toLocaleDateString(undefined, {
+          dateStyle: "full",
+        })}
+      </p>
 
-      <h1 className="page-block-title w-full text-center sm:text-6xl">
+      <h1 className="w-full text-center text-4xl font-bold sm:text-6xl">
         {blogMetadata.title}
       </h1>
 

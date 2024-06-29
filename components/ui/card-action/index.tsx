@@ -11,7 +11,7 @@ const BlogCardAction: FC<{ slug: string }> = ({ slug }): JSX.Element => {
   return (
     <>
       {!redirectLoading && (
-        <Link href={`/blog/${slug}`} onClick={() => setRedirectLoading(true)}>
+        <Link href={`/${slug}`} onClick={() => setRedirectLoading(true)}>
           <Button>Read More</Button>
         </Link>
       )}

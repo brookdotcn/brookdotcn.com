@@ -44,13 +44,13 @@ const Search: FC<Props> = ({ items }): JSX.Element => {
             <CommandEmpty>No blogs found.</CommandEmpty>
             <CommandGroup>
               {items.map((blog) => (
-                <Link key={blog.slug} href={`/blog/${blog.slug}`}>
+                <Link key={blog.slug} href={`/${blog.slug}`}>
                   <CommandItem
                     value={blog.title}
                     onSelect={(currentValue) => {
                       setValue(currentValue);
                       setOpen(false);
-                      router.push(`/blog/${blog.slug}`);
+                      router.push(`/${blog.slug}`);
                     }}
                   >
                     {blog.title}

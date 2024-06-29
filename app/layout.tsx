@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { type NextPage, type Metadata } from "next";
 import { type ReactNode, type JSX } from "react";
-import Navbar from "@/components/navbar";
 import Providers from "@/components/providers";
 
 export const metadata: Metadata = {
@@ -21,12 +20,7 @@ const IndexLayout: NextPage<Props> = ({ children }): JSX.Element => {
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <main className="flex min-h-screen flex-col sm:flex-row">
-            <Navbar />
-
-            <div className="h-full w-full overflow-y-auto">{children}</div>
-          </main>
-
+          <main className="container py-12">{children}</main>
           <Analytics />
           <SpeedInsights />
         </Providers>
